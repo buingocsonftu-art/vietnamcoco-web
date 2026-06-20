@@ -1,0 +1,9 @@
+---
+import Base from '../../layouts/Base.astro';
+import body from '../../bodies/products-husk.html?raw';
+import t from '../../i18n/products-husk.json';
+const figures = null;
+---
+<Base title="Husk — VIETNAMCOCO" description="Coir and coco peat from coconut husk." i18n={t} figures={figures}>
+  <Fragment set:html={body} />
+</Base>

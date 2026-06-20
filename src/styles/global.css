@@ -1,0 +1,21 @@
+/* Global base + responsive hardening (page-specific CSS lives inside each page body). */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0;padding:0;background:#E8E3D4;overflow-x:hidden;max-width:100%}
+body{font-family:'Spectral',Georgia,serif;-webkit-font-smoothing:antialiased}
+::selection{background:#B8863C;color:#17130F}
+
+/* overflow safety */
+img,svg,video,canvas,picture{max-width:100%}
+p,a,span,div,li,h1,h2,h3,h4{overflow-wrap:break-word}
+
+/* comfortable tap targets in the open mobile menu */
+@media (max-width:560px){
+  nav [data-navlinks][data-open] > a,
+  nav [data-navlinks][data-open] [data-lang-toggle]{ min-height:44px; display:flex; align-items:center }
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  [data-reveal]{opacity:1!important;transform:none!important}
+}

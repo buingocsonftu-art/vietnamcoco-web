@@ -1,0 +1,9 @@
+---
+import Base from '../layouts/Base.astro';
+import body from '../bodies/home.html?raw';
+import t from '../i18n/home.json';
+const figures = [{"pre":"~","to":200000,"post":" t"},{"pre":"","to":10000,"post":" ha"},{"pre":"","to":5,"post":" markets"},{"pre":"~$","to":50,"post":"M"}];
+---
+<Base title="VIETNAMCOCO — Coconut Trade &amp; Finance" description="We don't trade coconut. We revalue it. Certainty of price and supply, grove to factory." i18n={t} figures={figures}>
+  <Fragment set:html={body} />
+</Base>

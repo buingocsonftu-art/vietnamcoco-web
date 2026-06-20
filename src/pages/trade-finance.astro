@@ -1,0 +1,9 @@
+---
+import Base from '../layouts/Base.astro';
+import body from '../bodies/trade-finance.html?raw';
+import t from '../i18n/trade-finance.json';
+const figures = null;
+---
+<Base title="Trade &amp; Finance — VIETNAMCOCO" description="We sell certainty, not commodity." i18n={t} figures={figures}>
+  <Fragment set:html={body} />
+</Base>

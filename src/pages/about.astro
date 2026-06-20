@@ -1,0 +1,9 @@
+---
+import Base from '../layouts/Base.astro';
+import body from '../bodies/about.html?raw';
+import t from '../i18n/about.json';
+const figures = null;
+---
+<Base title="About — VIETNAMCOCO" description="A merchant bank for the coconut industry." i18n={t} figures={figures}>
+  <Fragment set:html={body} />
+</Base>

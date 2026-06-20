@@ -1,0 +1,213 @@
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:#E8E3D4}
+  @keyframes vncFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  ::selection{background:#B8863C;color:#17130F}
+  @media(max-width:1024px){
+    nav [data-burger]{display:inline-flex!important}
+    nav [data-navlinks]{display:none!important;position:absolute;left:0;right:0;top:100%;flex-direction:column!important;flex-wrap:nowrap!important;align-items:flex-start!important;justify-content:flex-start!important;gap:16px!important;background:#0E3B2C;border-top:1px solid rgba(232,227,212,.16);padding:18px 22px 24px;box-shadow:0 24px 40px -20px rgba(0,0,0,.5);max-height:82vh;overflow-y:auto}
+    nav [data-navlinks][data-open]{display:flex!important}
+    nav [data-dd]{flex-direction:column!important;align-items:flex-start!important;gap:8px!important;width:100%}
+    nav [data-dd-panel]{position:static!important;display:flex!important;transform:none!important;box-shadow:none!important;border:none!important;background:transparent!important;min-width:0!important;padding:2px 0 4px 12px!important}
+    nav [data-dd-caret]{display:none!important}
+  }
+  @media(min-width:1025px){ nav [data-burger]{display:none!important} }
+  html,body{overflow-x:hidden;max-width:100%}
+  image-slot{width:100%!important;height:100%!important;display:block!important}
+  @media(max-width:1024px){ nav [data-dd-panel] [data-mega-grid]{grid-template-columns:1fr!important;gap:0!important} }
+  @media(max-width:1024px){ nav [data-langdd]{width:100%} nav [data-lang-panel]{position:static!important;box-shadow:none!important;border:none!important;background:transparent!important;min-width:0!important;padding:2px 0 0 12px!important;margin-top:8px} nav [data-lang-caret]{display:none!important} }
+  @media(max-width:1024px){ nav [data-navlinks][data-open]>a{min-height:42px;display:flex;align-items:center} }
+</style>
+<div style="font-family:'Spectral',Georgia,serif;color:#1d1813;background:#E8E3D4;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden">
+
+  <!-- NAV -->
+  <nav style="position:sticky;top:0;z-index:60;background:rgba(14,59,44,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(232,227,212,.16)">
+    <div style="max-width:1140px;margin:0 auto;padding:11px clamp(20px,4vw,32px);display:flex;align-items:center;justify-content:space-between;gap:16px 20px;min-height:72px;flex-wrap:wrap">
+      <a href="/" style="display:flex;align-items:center;gap:13px;text-decoration:none;flex-shrink:0">
+        <svg width="36" height="36" viewBox="0 0 100 100" aria-hidden="true" style="flex-shrink:0">
+          <g fill="none" stroke="#B8863C" stroke-width="1.4"><circle cx="50" cy="50" r="46"/><circle cx="50" cy="50" r="40"/></g>
+          <circle cx="50" cy="50" r="43" fill="none" stroke="#B8863C" stroke-width="3" stroke-dasharray="0.5 4.3"/>
+          <circle cx="50" cy="50" r="30" fill="none" stroke="#E8E3D4" stroke-width="1.4"/>
+          <circle cx="42" cy="45" r="3.1" fill="#B8863C"/><circle cx="58" cy="45" r="3.1" fill="#B8863C"/><circle cx="50" cy="61" r="3.5" fill="#E8E3D4"/>
+        </svg>
+        <span style="display:flex;flex-direction:column;line-height:1">
+          <span style="font-family:'Archivo';font-weight:800;font-size:18px;letter-spacing:.04em;color:#E8E3D4">VIETNAMCOCO</span>
+          <span data-t="desc" style="font-family:'IBM Plex Mono';font-size:8.5px;letter-spacing:.22em;color:#B8863C;text-transform:uppercase;margin-top:4px">Coconut Trade &amp; Finance</span>
+        </span>
+      </a>
+      <button data-burger type="button" aria-label="Menu" style="display:none;align-items:center;justify-content:center;width:42px;height:42px;background:none;border:1px solid rgba(232,227,212,.28);border-radius:6px;color:#E8E3D4;cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      <div data-navlinks style="display:flex;gap:28px;align-items:center;flex-wrap:wrap;justify-content:flex-end">
+        <a href="/about" data-t="nav_about" style="color:#C9D2BE;text-decoration:none;font-family:'Archivo';font-weight:500;font-size:14.5px" style-hover="color:#fff">About</a>
+        <span data-dd style="position:relative;display:inline-flex;align-items:center;gap:5px"><a href="/products" data-t="nav_products" style="color:#fff;text-decoration:none;font-family:'Archivo';font-weight:500;font-size:14.5px;border-bottom:2px solid #B8863C;padding-bottom:2px">Products</a><span data-dd-caret style="color:#9fb2a6;font-size:9px;pointer-events:none">▼</span><div data-dd-panel style="position:absolute;top:calc(100% + 16px);left:0;display:none;flex-direction:column;min-width:680px;background:#0E3B2C;border:1px solid rgba(184,134,60,.4);border-radius:10px;padding:18px 18px 14px;box-shadow:0 24px 50px -18px rgba(0,0,0,.6);z-index:90"><div data-mega-grid style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px 22px"><div><a href="/products/kernel" style="display:block;font-family:'Archivo';font-weight:700;font-size:13px;color:#fff;text-decoration:none;padding:6px 8px;border-bottom:1px solid rgba(232,227,212,.12);margin-bottom:5px">Kernel <span style="font-family:'IBM Plex Mono';font-size:9px;color:#9fb2a6">· Cơm</span></a><a href="/products/desiccated-coconut" style="display:block;font-family:'Archivo';font-weight:500;font-size:12.5px;color:#C9D2BE;text-decoration:none;padding:6px 8px;border-radius:4px" style-hover="background:rgba(232,227,212,.08);color:#fff">Desiccated Coconut</a><a href="/products/kernel" style="display:block;font-family:'Archivo';font-weight:500;font-size:12.5px;color:#C9D2BE;text-decoration:none;padding:6px 8px;border-radius:4px" style-hover="background:rgba(232,227,212,.08);color:#fff">Coconut Milk &amp; Cream</a><a href="/products/kernel" style="display:block;font-family:'Archivo';font-weight:500;font-size:12.5px;color:#C9D2BE;text-decoration:none;padding:6px 8px;border-radius:4px" style-hover="background:rgba(232,227,212,.08);color:#fff">Coconut Oil</a><a href="/products/kernel" style="display:block;font-family:'Archivo';font-weight:500;font-size:12.5px;color:#C9D2BE;text-decoration:none;padding:6px 8px;border-radius:4px" style-hover="background:rgba(232,227,212,.08);color:#fff">Milk Powder</a></div><div><a href="/products/shell" style="display:block;font-family:'Archivo';font-weight:700;font-size:13px;color:#fff;text-decoration:none;padding:6px 8px;border-bottom:1px solid rgba(232,227,212,.12);margin-bottom:5px">Shell <span style="font-family:'IBM Plex Mono';font-size:9px;color:#9fb2a6">· Gáo</span></a><a href="/products/shell" style="display:block;font-family:'Archivo';font-weight:500;font-size:12.5px;color:#C9D2BE;text-decoration:none;padding:6px 8px;border-radius:4px" style-hover="background:rgba(232,227,212,.08);color:#fff">Activated Carbon</a><a href="/products/shell" style="display:block;font-family:'Archivo';font-weight:500;font-size:12.5px;color:#C9D2BE;text-decoration:none;padding:6px 8px;border-radius:4px" style-hover="background:rgba(232,227,212,.08);color:#fff">BBQ &amp; Shisha Charcoal</a></div><div><a href="/products/husk" style="display:block;font-family:'Archivo';font-weight:700;font-size:13px;color:#fff;text-decoration:none;padding:6px 8px;border-bottom:1px solid rgba(232,227,212,.12);margin-bottom:5px">Husk <span style="font-family:'IBM Plex Mono';font-size:9px;color:#9fb2a6">· Vỏ</span></a><a href="/products/husk" style="display:block;font-family:'Archivo';font-weight:500;font-size:12.5px;color:#C9D2BE;text-decoration:none;padding:6px 8px;border-radius:4px" style-hover="background:rgba(232,227,212,.08);color:#fff">Coir &amp; Coco Peat</a></div><div><a href="/products/water" style="display:block;font-family:'Archivo';font-weight:700;font-size:13px;color:#fff;text-decoration:none;padding:6px 8px;border-bottom:1px solid rgba(232,227,212,.12);margin-bottom:5px">Water <span style="font-family:'IBM Plex Mono';font-size:9px;color:#9fb2a6">· Nước</span></a><a href="/products/water" style="display:block;font-family:'Archivo';font-weight:500;font-size:12.5px;color:#C9D2BE;text-decoration:none;padding:6px 8px;border-radius:4px" style-hover="background:rgba(232,227,212,.08);color:#fff">Coconut Water Powder</a></div></div><div style="height:1px;background:rgba(232,227,212,.14);margin:14px 8px 10px"></div><a href="/products" style="align-self:flex-start;display:inline-flex;align-items:center;gap:6px;padding:6px 8px;text-decoration:none;font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#B8863C">All products →</a></div></span>
+        <a href="/trade-finance" data-t="nav_finance" style="color:#C9D2BE;text-decoration:none;font-family:'Archivo';font-weight:500;font-size:14.5px" style-hover="color:#fff">Trade &amp; Finance</a>
+        <a href="/sustainability" data-t="nav_sustainability" style="color:#C9D2BE;text-decoration:none;font-family:'Archivo';font-weight:500;font-size:14.5px" style-hover="color:#fff">Sustainability</a>
+        <a href="/contact" data-t="nav_contact" style="color:#C9D2BE;text-decoration:none;font-family:'Archivo';font-weight:500;font-size:14.5px" style-hover="color:#fff">Contact</a>
+        <a href="/insights" data-t="nav_insights" style="color:#C9D2BE;text-decoration:none;font-family:'Archivo';font-weight:500;font-size:14.5px" style-hover="color:#fff">Insights</a>
+        <span data-langdd style="position:relative;display:inline-flex;align-items:center"><button data-lang-toggle type="button" aria-label="Language" style="display:inline-flex;align-items:center;gap:7px;background:none;border:1px solid rgba(232,227,212,.2);border-radius:5px;padding:7px 11px;cursor:pointer;font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.06em;color:#E8E3D4"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#B8863C" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3.5 12h17"/><ellipse cx="12" cy="12" rx="4" ry="9"/></svg><span data-lang-current>EN</span><span data-lang-caret style="color:#9fb2a6;font-size:8px;pointer-events:none">▼</span></button><div data-lang-panel style="position:absolute;top:calc(100% + 12px);right:0;display:none;flex-direction:column;min-width:172px;background:#0E3B2C;border:1px solid rgba(184,134,60,.4);border-radius:8px;padding:6px;box-shadow:0 20px 44px -18px rgba(0,0,0,.55);z-index:95"><button data-lang-btn="en" type="button" style="display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;background:none;border:none;cursor:pointer;text-align:left;padding:9px 12px;border-radius:5px;font-family:'Archivo';font-weight:700;font-size:13.5px;color:#B8863C" style-hover="background:rgba(232,227,212,.08)">English <span style="font-family:'IBM Plex Mono';font-size:10px;color:#9fb2a6">EN</span></button><button data-lang-btn="vi" type="button" style="display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;background:none;border:none;cursor:pointer;text-align:left;padding:9px 12px;border-radius:5px;font-family:'Archivo';font-weight:400;font-size:13.5px;color:#C9D2BE" style-hover="background:rgba(232,227,212,.08)">Tiếng Việt <span style="font-family:'IBM Plex Mono';font-size:10px;color:#9fb2a6">VI</span></button></div></span>
+        <a href="/contact" data-t="cta_specs" style="font-family:'Archivo';font-weight:600;font-size:14px;text-decoration:none;border-radius:5px;padding:10px 18px;background:#B8863C;color:#231a0c;transition:background .2s" style-hover="background:#caa055">Request specs</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header style="background:#fff;color:#1d1813;position:relative;overflow:hidden;border-bottom:1px solid rgba(23,19,15,.08);padding:clamp(56px,8vw,92px) 0">
+    <div aria-hidden="true" style="position:absolute;right:-200px;top:-140px;width:600px;height:600px;border-radius:50%;border:1px solid rgba(184,134,60,.16)"><div style="position:absolute;inset:90px;border-radius:50%;border:1px solid rgba(184,134,60,.11)"></div></div>
+    <div style="max-width:1140px;margin:0 auto;padding:0 clamp(20px,4vw,32px);position:relative;z-index:2">
+      <div data-t="h_kick" style="font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:#B8863C">Products — Trọn trái dừa</div>
+      <h1 style="font-family:'Archivo';font-weight:800;letter-spacing:-.02em;font-size:clamp(38px,5.6vw,72px);line-height:1.02;color:#0E3B2C;margin-top:16px;max-width:16ch"><span data-t="h_h1a">The whole coconut, as a </span><em data-t="h_h1b" style="font-family:'Spectral';font-style:italic;font-weight:500;color:#B8863C">portfolio.</em></h1>
+      <p data-t="h_sub" style="font-size:clamp(17px,1.7vw,20px);color:#564d40;max-width:640px;margin-top:22px;line-height:1.6">Four product lines drawn from a single nut — kernel, shell, husk and water. Each carries its own HS classification, and each feeds the next.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:30px">
+        <a href="#kernel" data-t="ax0" style="font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:#0E3B2C;border:1px solid rgba(14,59,44,.2);border-radius:5px;padding:9px 14px" style-hover="border-color:#B8863C;color:#0E3B2C">Kernel</a>
+        <a href="#shell" data-t="ax1" style="font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:#0E3B2C;border:1px solid rgba(14,59,44,.2);border-radius:5px;padding:9px 14px" style-hover="border-color:#B8863C;color:#0E3B2C">Shell</a>
+        <a href="#husk" data-t="ax2" style="font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:#0E3B2C;border:1px solid rgba(14,59,44,.2);border-radius:5px;padding:9px 14px" style-hover="border-color:#B8863C;color:#0E3B2C">Husk</a>
+        <a href="#water" data-t="ax3" style="font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:#0E3B2C;border:1px solid rgba(14,59,44,.2);border-radius:5px;padding:9px 14px" style-hover="border-color:#B8863C;color:#0E3B2C">Water</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- KERNEL -->
+  <section id="kernel" style="background:#E8E3D4;padding:clamp(60px,8vw,96px) 0">
+    <div data-reveal style="max-width:1140px;margin:0 auto;padding:0 clamp(20px,4vw,32px);opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1)">
+      <div style="display:flex;gap:clamp(28px,5vw,64px);flex-wrap:wrap;align-items:flex-start">
+        <div style="flex:1 1 300px;min-width:280px">
+          <div style="font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#B8863C">Line 01 · Kernel · Cơm</div>
+          <h2 data-t="k_h2" style="font-family:'Archivo';font-weight:700;letter-spacing:-.015em;font-size:clamp(26px,3.2vw,40px);line-height:1.1;color:#0E3B2C;margin-top:12px">The flesh</h2>
+          <p data-t="k_p" style="font-size:16.5px;color:#473f34;margin-top:16px;line-height:1.7;max-width:440px">The highest-value fraction of the nut. Processed into food ingredients for manufacturers — desiccated, liquid, oil and powder forms.</p>
+          <div style="margin-top:18px"><a href="/products/kernel" data-t="vk" style="display:inline-flex;align-items:center;gap:6px;font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:#0E3B2C;border-bottom:1px solid #B8863C;padding-bottom:3px" style-hover="color:#B8863C">View the kernel line →</a></div>
+          <div style="border:1px solid rgba(184,134,60,.4);border-radius:8px;padding:8px;background:#fff;margin-top:24px;max-width:440px">
+            <img src="/assets/coco/prod-kernel.jpg" alt="Documentary photograph — coconut cross-section / kernel" loading="lazy" style="width:100%;height:260px;display:block;border-radius:4px;object-fit:cover" />
+          </div>
+        </div>
+        <div style="flex:1.2 1 360px;min-width:300px">
+          <div style="display:grid;gap:0;border-top:1px solid rgba(23,19,15,.12)">
+            <a href="/products/kernel" style="display:flex;justify-content:space-between;gap:16px;align-items:baseline;border-bottom:1px solid rgba(23,19,15,.12);padding:16px 0;text-decoration:none;transition:background .18s" style-hover="background:rgba(184,134,60,.08)"><div><div data-t="k0n" style="font-family:'Archivo';font-weight:600;font-size:17px;color:#0E3B2C">Desiccated Coconut</div><div data-t="k0d" style="font-size:13.5px;color:#7A5634;margin-top:3px">Fine / medium / coarse · low-fat grades</div></div><div style="font-family:'IBM Plex Mono';font-size:12px;color:#B8863C;text-align:right;white-space:nowrap">HS 0801.11</div></a>
+            <a href="/products/kernel" style="display:flex;justify-content:space-between;gap:16px;align-items:baseline;border-bottom:1px solid rgba(23,19,15,.12);padding:16px 0;text-decoration:none;transition:background .18s" style-hover="background:rgba(184,134,60,.08)"><div><div data-t="k1n" style="font-family:'Archivo';font-weight:600;font-size:17px;color:#0E3B2C">Coconut Milk &amp; Cream</div><div data-t="k1d" style="font-size:13.5px;color:#7A5634;margin-top:3px">UHT · canned · varying fat content</div></div><div style="font-family:'IBM Plex Mono';font-size:12px;color:#B8863C;text-align:right;white-space:nowrap">HS 2008.19</div></a>
+            <a href="/products/kernel" style="display:flex;justify-content:space-between;gap:16px;align-items:baseline;border-bottom:1px solid rgba(23,19,15,.12);padding:16px 0;text-decoration:none;transition:background .18s" style-hover="background:rgba(184,134,60,.08)"><div><div data-t="k2n" style="font-family:'Archivo';font-weight:600;font-size:17px;color:#0E3B2C">Coconut Oil — VCO / RBD / MCT</div><div data-t="k2d" style="font-size:13.5px;color:#7A5634;margin-top:3px">Virgin, refined and fractionated</div></div><div style="font-family:'IBM Plex Mono';font-size:12px;color:#B8863C;text-align:right;white-space:nowrap">HS 1513.11</div></a>
+            <a href="/products/kernel" style="display:flex;justify-content:space-between;gap:16px;align-items:baseline;border-bottom:1px solid rgba(23,19,15,.12);padding:16px 0;text-decoration:none;transition:background .18s" style-hover="background:rgba(184,134,60,.08)"><div><div data-t="k3n" style="font-family:'Archivo';font-weight:600;font-size:17px;color:#0E3B2C">Coconut Milk Powder</div><div data-t="k3d" style="font-size:13.5px;color:#7A5634;margin-top:3px">Spray-dried · maltodextrin carrier options</div></div><div style="font-family:'IBM Plex Mono';font-size:12px;color:#B8863C;text-align:right;white-space:nowrap">HS 1106.30</div></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHELL -->
+  <section id="shell" style="background:#F2EEE3;color:#1d1813;padding:clamp(60px,8vw,96px) 0">
+    <div data-reveal style="max-width:1140px;margin:0 auto;padding:0 clamp(20px,4vw,32px);opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1)">
+      <div style="display:flex;gap:clamp(28px,5vw,64px);flex-wrap:wrap;align-items:flex-start">
+        <div style="flex:1 1 300px;min-width:280px">
+          <div style="font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#B8863C">Line 02 · Shell · Gáo</div>
+          <h2 data-t="sh_h2" style="font-family:'Archivo';font-weight:700;letter-spacing:-.015em;font-size:clamp(26px,3.2vw,40px);line-height:1.1;color:#0E3B2C;margin-top:12px">The shell</h2>
+          <p data-t="sh_p" style="font-size:16.5px;color:#564d40;margin-top:16px;line-height:1.7;max-width:440px">Carbonised into industrial and consumer fuels. A by-product stream that turns waste into a second margin.</p>
+          <a href="/products/shell" data-t="vs" style="display:inline-flex;align-items:center;gap:6px;margin-top:18px;font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:#0E3B2C;border-bottom:1px solid #B8863C;padding-bottom:3px" style-hover="color:#B8863C">View the shell line →</a>
+        </div>
+        <div style="flex:1.2 1 360px;min-width:300px">
+          <div style="display:grid;gap:0;border-top:1px solid rgba(14,59,44,.12)">
+            <a href="/products/shell" style="display:flex;justify-content:space-between;gap:16px;align-items:baseline;border-bottom:1px solid rgba(14,59,44,.12);padding:16px 0;text-decoration:none;transition:background .18s" style-hover="background:rgba(184,134,60,.08)"><div><div data-t="sh0n" style="font-family:'Archivo';font-weight:600;font-size:17px;color:#0E3B2C">Activated Carbon</div><div data-t="sh0d" style="font-size:13.5px;color:#564d40;margin-top:3px">Steam-activated · water &amp; air filtration grades</div></div><div style="font-family:'IBM Plex Mono';font-size:12px;color:#B8863C;text-align:right;white-space:nowrap">HS 3802.10</div></a>
+            <a href="/products/shell" style="display:flex;justify-content:space-between;gap:16px;align-items:baseline;border-bottom:1px solid rgba(14,59,44,.12);padding:16px 0;text-decoration:none;transition:background .18s" style-hover="background:rgba(184,134,60,.08)"><div><div data-t="sh1n" style="font-family:'Archivo';font-weight:600;font-size:17px;color:#0E3B2C">BBQ &amp; Shisha Charcoal</div><div data-t="sh1d" style="font-size:13.5px;color:#564d40;margin-top:3px">Cube &amp; briquette · low-ash, long-burn</div></div><div style="font-family:'IBM Plex Mono';font-size:12px;color:#B8863C;text-align:right;white-space:nowrap">HS 4402.90</div></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HUSK -->
+  <section id="husk" style="background:#E8E3D4;padding:clamp(60px,8vw,96px) 0">
+    <div data-reveal style="max-width:1140px;margin:0 auto;padding:0 clamp(20px,4vw,32px);opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1)">
+      <div style="display:flex;gap:clamp(28px,5vw,64px);flex-wrap:wrap;align-items:flex-start">
+        <div style="flex:1 1 300px;min-width:280px">
+          <div style="font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#B8863C">Line 03 · Husk · Vỏ</div>
+          <h2 data-t="hu_h2" style="font-family:'Archivo';font-weight:700;letter-spacing:-.015em;font-size:clamp(26px,3.2vw,40px);line-height:1.1;color:#0E3B2C;margin-top:12px">The husk</h2>
+          <p data-t="hu_p" style="font-size:16.5px;color:#473f34;margin-top:16px;line-height:1.7;max-width:440px">Fibre and pith for horticulture and materials. Bulky, low-value raw material made shippable and graded.</p>
+          <a href="/products/husk" data-t="vh" style="display:inline-flex;align-items:center;gap:6px;margin-top:18px;font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:#0E3B2C;border-bottom:1px solid #B8863C;padding-bottom:3px" style-hover="color:#B8863C">View the husk line →</a>
+        </div>
+        <div style="flex:1.2 1 360px;min-width:300px">
+          <div style="display:grid;gap:0;border-top:1px solid rgba(23,19,15,.12)">
+            <a href="/products/husk" style="display:flex;justify-content:space-between;gap:16px;align-items:baseline;border-bottom:1px solid rgba(23,19,15,.12);padding:16px 0;text-decoration:none;transition:background .18s" style-hover="background:rgba(184,134,60,.08)"><div><div data-t="hu0n" style="font-family:'Archivo';font-weight:600;font-size:17px;color:#0E3B2C">Coir &amp; Coco Peat</div><div data-t="hu0d" style="font-size:13.5px;color:#7A5634;margin-top:3px">Blocks, discs &amp; grow bags · low-EC washed</div></div><div style="font-family:'IBM Plex Mono';font-size:12px;color:#B8863C;text-align:right;white-space:nowrap">HS 5305</div></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WATER -->
+  <section id="water" style="background:#F2EEE3;color:#1d1813;padding:clamp(60px,8vw,96px) 0">
+    <div data-reveal style="max-width:1140px;margin:0 auto;padding:0 clamp(20px,4vw,32px);opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1)">
+      <div style="display:flex;gap:clamp(28px,5vw,64px);flex-wrap:wrap;align-items:flex-start">
+        <div style="flex:1 1 300px;min-width:280px">
+          <div style="font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#B8863C">Line 04 · Water · Nước</div>
+          <h2 data-t="w_h2" style="font-family:'Archivo';font-weight:700;letter-spacing:-.015em;font-size:clamp(26px,3.2vw,40px);line-height:1.1;color:#0E3B2C;margin-top:12px">The water</h2>
+          <p data-t="w_p" style="font-size:16.5px;color:#564d40;margin-top:16px;line-height:1.7;max-width:440px">Recovered and dried into a stable ingredient — shelf-stable and shippable where fresh water is not.</p>
+          <a href="/products/water" data-t="vw" style="display:inline-flex;align-items:center;gap:6px;margin-top:18px;font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:#0E3B2C;border-bottom:1px solid #B8863C;padding-bottom:3px" style-hover="color:#B8863C">View the water line →</a>
+        </div>
+        <div style="flex:1.2 1 360px;min-width:300px">
+          <div style="display:grid;gap:0;border-top:1px solid rgba(14,59,44,.12)">
+            <a href="/products/water" style="display:flex;justify-content:space-between;gap:16px;align-items:baseline;border-bottom:1px solid rgba(14,59,44,.12);padding:16px 0;text-decoration:none;transition:background .18s" style-hover="background:rgba(184,134,60,.08)"><div><div data-t="w0n" style="font-family:'Archivo';font-weight:600;font-size:17px;color:#0E3B2C">Coconut Water Powder</div><div data-t="w0d" style="font-size:13.5px;color:#564d40;margin-top:3px">Spray-dried · beverage &amp; supplement grade</div></div><div style="font-family:'IBM Plex Mono';font-size:12px;color:#B8863C;text-align:right;white-space:nowrap">HS 2106.90</div></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZERO WASTE -->
+  <section style="background:#F2EEE3;padding:clamp(60px,8vw,96px) 0">
+    <div data-reveal style="max-width:1140px;margin:0 auto;padding:0 clamp(20px,4vw,32px);opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1)">
+      <div data-t="z_kick" style="font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:#B8863C">The loop</div>
+      <h2 data-t="z_h2" style="font-family:'Archivo';font-weight:700;letter-spacing:-.015em;font-size:clamp(26px,3.2vw,40px);line-height:1.1;color:#0E3B2C;margin-top:12px;max-width:18ch">Nothing leaves the chain as waste.</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:36px">
+        <div style="background:#fff;border:1px solid rgba(23,19,15,.08);border-radius:6px;padding:24px"><div data-t="z0" style="font-family:'Spectral';font-size:16px;color:#1d1813;line-height:1.6">Oil press cake → defatted desiccated coconut</div></div>
+        <div style="background:#fff;border:1px solid rgba(23,19,15,.08);border-radius:6px;padding:24px"><div data-t="z1" style="font-family:'Spectral';font-size:16px;color:#1d1813;line-height:1.6">VCO skim → milk powder feedstock</div></div>
+        <div style="background:#fff;border:1px solid rgba(23,19,15,.08);border-radius:6px;padding:24px"><div data-t="z2" style="font-family:'Spectral';font-size:16px;color:#1d1813;line-height:1.6">Shell &amp; husk → activated carbon &amp; coir</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background:#0E3B2C;color:#E8E3D4;padding:clamp(56px,8vw,92px) 0">
+    <div data-reveal style="max-width:760px;margin:0 auto;padding:0 clamp(20px,4vw,32px);text-align:center;opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1)">
+      <h2 data-t="cta_h2" style="font-family:'Archivo';font-weight:700;letter-spacing:-.015em;font-size:clamp(26px,3.4vw,40px);line-height:1.12;color:#fff;max-width:20ch;margin:0 auto">Send your line and market. We'll return spec sheets.</h2>
+      <div style="display:flex;gap:14px;justify-content:center;margin-top:30px;flex-wrap:wrap">
+        <a href="/contact" data-t="cta_specs" style="font-family:'Archivo';font-weight:600;font-size:15px;text-decoration:none;border-radius:5px;padding:13px 24px;background:#B8863C;color:#231a0c;transition:background .2s" style-hover="background:#caa055">Request specs</a>
+        <a href="/trade-finance" data-t="cta_fin" style="font-family:'Archivo';font-weight:600;font-size:15px;text-decoration:none;border-radius:5px;padding:13px 24px;border:1px solid rgba(201,210,190,.55);color:#E8E3D4;transition:background .2s" style-hover="background:rgba(255,255,255,.07)">How we finance it</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:#17130F;color:#C9D2BE;padding:clamp(44px,6vw,58px) 0 40px">
+    <div style="max-width:1140px;margin:0 auto;padding:0 clamp(20px,4vw,32px)">
+      <div style="display:flex;justify-content:space-between;gap:44px;flex-wrap:wrap;border-bottom:1px solid rgba(232,227,212,.16);padding-bottom:32px">
+        <div style="flex:1 1 260px;min-width:240px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <svg width="34" height="34" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#B8863C" stroke-width="1.4"><circle cx="50" cy="50" r="46"/><circle cx="50" cy="50" r="40"/></g><circle cx="50" cy="50" r="43" fill="none" stroke="#B8863C" stroke-width="3" stroke-dasharray="0.5 4.3"/><circle cx="50" cy="50" r="30" fill="none" stroke="#B8863C" stroke-width="1.4"/><circle cx="42" cy="45" r="3.1" fill="#B8863C"/><circle cx="58" cy="45" r="3.1" fill="#B8863C"/><circle cx="50" cy="61" r="3.5" fill="#B8863C"/></svg>
+            <div><div style="font-family:'Archivo';font-weight:800;font-size:18px;color:#E8E3D4;letter-spacing:.03em">VIETNAMCOCO</div><div data-t="desc" style="font-family:'IBM Plex Mono';font-size:9px;letter-spacing:.2em;color:#B8863C;text-transform:uppercase;margin-top:3px">Coconut Trade &amp; Finance</div></div>
+          </div>
+          <p data-t="foot_tag" style="max-width:280px;margin-top:16px;font-size:14px;color:#8a8475;font-family:'Spectral';font-style:italic">The whole coconut. The whole chain.</p>
+          <div style="margin-top:22px"><div data-t="ft_markets" style="font-family:'IBM Plex Mono';font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#B8863C;margin-bottom:10px">Export markets</div><div style="display:flex;flex-wrap:wrap;gap:7px"><span data-t="ft_mk_eu" style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.06em;color:#C9D2BE;border:1px solid rgba(232,227,212,.2);border-radius:40px;padding:4px 11px">EU</span><span data-t="ft_mk_us" style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.06em;color:#C9D2BE;border:1px solid rgba(232,227,212,.2);border-radius:40px;padding:4px 11px">USA</span><span data-t="ft_mk_cn" style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.06em;color:#C9D2BE;border:1px solid rgba(232,227,212,.2);border-radius:40px;padding:4px 11px">China</span><span data-t="ft_mk_kr" style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.06em;color:#C9D2BE;border:1px solid rgba(232,227,212,.2);border-radius:40px;padding:4px 11px">Korea</span><span data-t="ft_mk_jp" style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.06em;color:#C9D2BE;border:1px solid rgba(232,227,212,.2);border-radius:40px;padding:4px 11px">Japan</span></div></div>
+        </div>
+        <div style="display:flex;gap:clamp(28px,5vw,56px);flex-wrap:wrap">
+          <div>
+            <h4 data-t="foot_portfolio" style="font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#B8863C;margin-bottom:13px">Portfolio</h4>
+            <a href="#kernel" data-t="k_h2b" style="display:block;font-size:14px;color:#C9D2BE;text-decoration:none;margin:7px 0" style-hover="color:#fff">Kernel</a>
+            <a href="#shell" data-t="sh_h2b" style="display:block;font-size:14px;color:#C9D2BE;text-decoration:none;margin:7px 0" style-hover="color:#fff">Shell</a>
+            <a href="#husk" data-t="hu_h2b" style="display:block;font-size:14px;color:#C9D2BE;text-decoration:none;margin:7px 0" style-hover="color:#fff">Husk</a>
+            <a href="#water" data-t="w_h2b" style="display:block;font-size:14px;color:#C9D2BE;text-decoration:none;margin:7px 0" style-hover="color:#fff">Water</a>
+          </div>
+          <div>
+            <h4 data-t="nav_contact" style="font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#B8863C;margin-bottom:13px">Contact</h4>
+            <a href="https://www.vietnamcoco.vn" style="display:block;font-size:14px;color:#C9D2BE;text-decoration:none;margin:7px 0" style-hover="color:#fff">www.vietnamcoco.vn</a>
+            <a href="mailto:welcome@vietnamcoco.vn" style="display:block;font-size:14px;color:#C9D2BE;text-decoration:none;margin:7px 0" style-hover="color:#fff">welcome@vietnamcoco.vn</a>
+            <p style="font-size:14px;color:#C9D2BE;margin:7px 0">+84 906 688 264</p>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:30px;padding-top:24px;border-top:1px solid rgba(232,227,212,.1);display:flex;gap:clamp(24px,5vw,56px);flex-wrap:wrap"><div style="flex:1 1 260px;min-width:240px"><div data-t="ft_terms_l" style="font-family:'IBM Plex Mono';font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#B8863C;margin-bottom:11px">Trade terms</div><div style="display:flex;flex-wrap:wrap;gap:7px"><span style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.05em;color:#C9D2BE;border:1px solid rgba(232,227,212,.16);border-radius:40px;padding:4px 11px">FOB</span><span style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.05em;color:#C9D2BE;border:1px solid rgba(232,227,212,.16);border-radius:40px;padding:4px 11px">CFR</span><span style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.05em;color:#C9D2BE;border:1px solid rgba(232,227,212,.16);border-radius:40px;padding:4px 11px">CIF</span><span style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.05em;color:#C9D2BE;border:1px solid rgba(232,227,212,.16);border-radius:40px;padding:4px 11px">L/C-ready</span><span style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.05em;color:#C9D2BE;border:1px solid rgba(232,227,212,.16);border-radius:40px;padding:4px 11px">HS-classified</span></div></div><div style="flex:1 1 260px;min-width:240px"><div data-t="ft_cert_l" style="font-family:'IBM Plex Mono';font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#B8863C;margin-bottom:11px">Certifications</div><div style="display:flex;flex-wrap:wrap;gap:7px"><span style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.05em;color:#C9D2BE;border:1px solid rgba(232,227,212,.16);border-radius:40px;padding:4px 11px">HACCP</span><span style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.05em;color:#C9D2BE;border:1px solid rgba(232,227,212,.16);border-radius:40px;padding:4px 11px">ISO 22000</span><span style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.05em;color:#C9D2BE;border:1px solid rgba(232,227,212,.16);border-radius:40px;padding:4px 11px">BRC</span><span style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.05em;color:#C9D2BE;border:1px solid rgba(232,227,212,.16);border-radius:40px;padding:4px 11px">Organic</span><span style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.05em;color:#C9D2BE;border:1px solid rgba(232,227,212,.16);border-radius:40px;padding:4px 11px">Halal</span></div><div data-t="ft_cert_note" style="font-family:'IBM Plex Mono';font-size:9px;letter-spacing:.06em;color:#B8863C;opacity:.7;margin-top:10px">⚠ Pending verification</div></div></div>
+      <div style="margin-top:26px;font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.04em;color:#6f6a5e;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap">
+        <span>© 2026 Công ty TM Liên Thái Bình Dương · Lien Thai Binh Duong Trading Co., Ltd</span>
+        <span data-t="foot_note">Prototype — capability figures pending verification</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>

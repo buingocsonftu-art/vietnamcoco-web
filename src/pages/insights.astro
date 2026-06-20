@@ -1,0 +1,9 @@
+---
+import Base from '../layouts/Base.astro';
+import body from '../bodies/insights.html?raw';
+import t from '../i18n/insights.json';
+const figures = null;
+---
+<Base title="Insights — VIETNAMCOCO" description="Notes from the coconut trade desk." i18n={t} figures={figures}>
+  <Fragment set:html={body} />
+</Base>

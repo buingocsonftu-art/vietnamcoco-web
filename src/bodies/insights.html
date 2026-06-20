@@ -1,0 +1,218 @@
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:#E8E3D4}
+  @keyframes vncFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  ::selection{background:#B8863C;color:#17130F}
+  @media(max-width:1024px){
+    nav [data-burger]{display:inline-flex!important}
+    nav [data-navlinks]{display:none!important;position:absolute;left:0;right:0;top:100%;flex-direction:column!important;flex-wrap:nowrap!important;align-items:flex-start!important;justify-content:flex-start!important;gap:16px!important;background:#0E3B2C;border-top:1px solid rgba(232,227,212,.16);padding:18px 22px 24px;box-shadow:0 24px 40px -20px rgba(0,0,0,.5);max-height:82vh;overflow-y:auto}
+    nav [data-navlinks][data-open]{display:flex!important}
+    nav [data-dd]{flex-direction:column!important;align-items:flex-start!important;gap:8px!important;width:100%}
+    nav [data-dd-panel]{position:static!important;display:flex!important;transform:none!important;box-shadow:none!important;border:none!important;background:transparent!important;min-width:0!important;padding:2px 0 4px 12px!important}
+    nav [data-dd-caret]{display:none!important}
+  }
+  @media(min-width:1025px){ nav [data-burger]{display:none!important} }
+  html,body{overflow-x:hidden;max-width:100%}
+  image-slot{width:100%!important;height:100%!important;display:block!important}
+  @media(max-width:1024px){ nav [data-dd-panel] [data-mega-grid]{grid-template-columns:1fr!important;gap:0!important} }
+  @media(max-width:1024px){ nav [data-langdd]{width:100%} nav [data-lang-panel]{position:static!important;box-shadow:none!important;border:none!important;background:transparent!important;min-width:0!important;padding:2px 0 0 12px!important;margin-top:8px} nav [data-lang-caret]{display:none!important} }
+  @media(max-width:1024px){ nav [data-navlinks][data-open]>a{min-height:42px;display:flex;align-items:center} }
+  input::placeholder{color:rgba(232,227,212,.42)}
+</style>
+<div style="font-family:'Spectral',Georgia,serif;color:#1d1813;background:#E8E3D4;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden">
+
+  <!-- NAV -->
+  <nav style="position:sticky;top:0;z-index:60;background:rgba(14,59,44,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(232,227,212,.16)">
+    <div style="max-width:1140px;margin:0 auto;padding:11px clamp(20px,4vw,32px);display:flex;align-items:center;justify-content:space-between;gap:16px 20px;min-height:72px;flex-wrap:wrap">
+      <a href="/" style="display:flex;align-items:center;gap:13px;text-decoration:none;flex-shrink:0">
+        <svg width="36" height="36" viewBox="0 0 100 100" aria-hidden="true" style="flex-shrink:0">
+          <g fill="none" stroke="#B8863C" stroke-width="1.4"><circle cx="50" cy="50" r="46"/><circle cx="50" cy="50" r="40"/></g>
+          <circle cx="50" cy="50" r="43" fill="none" stroke="#B8863C" stroke-width="3" stroke-dasharray="0.5 4.3"/>
+          <circle cx="50" cy="50" r="30" fill="none" stroke="#E8E3D4" stroke-width="1.4"/>
+          <circle cx="42" cy="45" r="3.1" fill="#B8863C"/><circle cx="58" cy="45" r="3.1" fill="#B8863C"/><circle cx="50" cy="61" r="3.5" fill="#E8E3D4"/>
+        </svg>
+        <span style="display:flex;flex-direction:column;line-height:1">
+          <span style="font-family:'Archivo';font-weight:800;font-size:18px;letter-spacing:.04em;color:#E8E3D4">VIETNAMCOCO</span>
+          <span data-t="desc" style="font-family:'IBM Plex Mono';font-size:8.5px;letter-spacing:.22em;color:#B8863C;text-transform:uppercase;margin-top:4px">Coconut Trade &amp; Finance</span>
+        </span>
+      </a>
+      <button data-burger type="button" aria-label="Menu" style="display:none;align-items:center;justify-content:center;width:42px;height:42px;background:none;border:1px solid rgba(232,227,212,.28);border-radius:6px;color:#E8E3D4;cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      <div data-navlinks style="display:flex;gap:28px;align-items:center;flex-wrap:wrap;justify-content:flex-end">
+        <a href="/about" data-t="nav_about" style="color:#C9D2BE;text-decoration:none;font-family:'Archivo';font-weight:500;font-size:14.5px" style-hover="color:#fff">About</a>
+        <span data-dd style="position:relative;display:inline-flex;align-items:center;gap:5px"><a href="/products" data-t="nav_products" style="color:#C9D2BE;text-decoration:none;font-family:'Archivo';font-weight:500;font-size:14.5px" style-hover="color:#fff">Products</a><span data-dd-caret style="color:#9fb2a6;font-size:9px;pointer-events:none">▼</span><div data-dd-panel style="position:absolute;top:calc(100% + 16px);left:0;display:none;flex-direction:column;min-width:680px;background:#0E3B2C;border:1px solid rgba(184,134,60,.4);border-radius:10px;padding:18px 18px 14px;box-shadow:0 24px 50px -18px rgba(0,0,0,.6);z-index:90"><div data-mega-grid style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px 22px"><div><a href="/products/kernel" style="display:block;font-family:'Archivo';font-weight:700;font-size:13px;color:#fff;text-decoration:none;padding:6px 8px;border-bottom:1px solid rgba(232,227,212,.12);margin-bottom:5px">Kernel <span style="font-family:'IBM Plex Mono';font-size:9px;color:#9fb2a6">· Cơm</span></a><a href="/products/desiccated-coconut" style="display:block;font-family:'Archivo';font-weight:500;font-size:12.5px;color:#C9D2BE;text-decoration:none;padding:6px 8px;border-radius:4px" style-hover="background:rgba(232,227,212,.08);color:#fff">Desiccated Coconut</a><a href="/products/kernel" style="display:block;font-family:'Archivo';font-weight:500;font-size:12.5px;color:#C9D2BE;text-decoration:none;padding:6px 8px;border-radius:4px" style-hover="background:rgba(232,227,212,.08);color:#fff">Coconut Milk &amp; Cream</a><a href="/products/kernel" style="display:block;font-family:'Archivo';font-weight:500;font-size:12.5px;color:#C9D2BE;text-decoration:none;padding:6px 8px;border-radius:4px" style-hover="background:rgba(232,227,212,.08);color:#fff">Coconut Oil</a><a href="/products/kernel" style="display:block;font-family:'Archivo';font-weight:500;font-size:12.5px;color:#C9D2BE;text-decoration:none;padding:6px 8px;border-radius:4px" style-hover="background:rgba(232,227,212,.08);color:#fff">Milk Powder</a></div><div><a href="/products/shell" style="display:block;font-family:'Archivo';font-weight:700;font-size:13px;color:#fff;text-decoration:none;padding:6px 8px;border-bottom:1px solid rgba(232,227,212,.12);margin-bottom:5px">Shell <span style="font-family:'IBM Plex Mono';font-size:9px;color:#9fb2a6">· Gáo</span></a><a href="/products/shell" style="display:block;font-family:'Archivo';font-weight:500;font-size:12.5px;color:#C9D2BE;text-decoration:none;padding:6px 8px;border-radius:4px" style-hover="background:rgba(232,227,212,.08);color:#fff">Activated Carbon</a><a href="/products/shell" style="display:block;font-family:'Archivo';font-weight:500;font-size:12.5px;color:#C9D2BE;text-decoration:none;padding:6px 8px;border-radius:4px" style-hover="background:rgba(232,227,212,.08);color:#fff">BBQ &amp; Shisha Charcoal</a></div><div><a href="/products/husk" style="display:block;font-family:'Archivo';font-weight:700;font-size:13px;color:#fff;text-decoration:none;padding:6px 8px;border-bottom:1px solid rgba(232,227,212,.12);margin-bottom:5px">Husk <span style="font-family:'IBM Plex Mono';font-size:9px;color:#9fb2a6">· Vỏ</span></a><a href="/products/husk" style="display:block;font-family:'Archivo';font-weight:500;font-size:12.5px;color:#C9D2BE;text-decoration:none;padding:6px 8px;border-radius:4px" style-hover="background:rgba(232,227,212,.08);color:#fff">Coir &amp; Coco Peat</a></div><div><a href="/products/water" style="display:block;font-family:'Archivo';font-weight:700;font-size:13px;color:#fff;text-decoration:none;padding:6px 8px;border-bottom:1px solid rgba(232,227,212,.12);margin-bottom:5px">Water <span style="font-family:'IBM Plex Mono';font-size:9px;color:#9fb2a6">· Nước</span></a><a href="/products/water" style="display:block;font-family:'Archivo';font-weight:500;font-size:12.5px;color:#C9D2BE;text-decoration:none;padding:6px 8px;border-radius:4px" style-hover="background:rgba(232,227,212,.08);color:#fff">Coconut Water Powder</a></div></div><div style="height:1px;background:rgba(232,227,212,.14);margin:14px 8px 10px"></div><a href="/products" style="align-self:flex-start;display:inline-flex;align-items:center;gap:6px;padding:6px 8px;text-decoration:none;font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#B8863C">All products →</a></div></span>
+        <a href="/trade-finance" data-t="nav_finance" style="color:#C9D2BE;text-decoration:none;font-family:'Archivo';font-weight:500;font-size:14.5px" style-hover="color:#fff">Trade &amp; Finance</a>
+        <a href="/sustainability" data-t="nav_sustainability" style="color:#C9D2BE;text-decoration:none;font-family:'Archivo';font-weight:500;font-size:14.5px" style-hover="color:#fff">Sustainability</a>
+        <a href="/insights" data-t="nav_insights" style="color:#fff;text-decoration:none;font-family:'Archivo';font-weight:500;font-size:14.5px;border-bottom:2px solid #B8863C;padding-bottom:2px">Insights</a>
+        <a href="/contact" data-t="nav_contact" style="color:#C9D2BE;text-decoration:none;font-family:'Archivo';font-weight:500;font-size:14.5px" style-hover="color:#fff">Contact</a>
+        <span data-langdd style="position:relative;display:inline-flex;align-items:center"><button data-lang-toggle type="button" aria-label="Language" style="display:inline-flex;align-items:center;gap:7px;background:none;border:1px solid rgba(232,227,212,.2);border-radius:5px;padding:7px 11px;cursor:pointer;font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.06em;color:#E8E3D4"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#B8863C" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3.5 12h17"/><ellipse cx="12" cy="12" rx="4" ry="9"/></svg><span data-lang-current>EN</span><span data-lang-caret style="color:#9fb2a6;font-size:8px;pointer-events:none">▼</span></button><div data-lang-panel style="position:absolute;top:calc(100% + 12px);right:0;display:none;flex-direction:column;min-width:172px;background:#0E3B2C;border:1px solid rgba(184,134,60,.4);border-radius:8px;padding:6px;box-shadow:0 20px 44px -18px rgba(0,0,0,.55);z-index:95"><button data-lang-btn="en" type="button" style="display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;background:none;border:none;cursor:pointer;text-align:left;padding:9px 12px;border-radius:5px;font-family:'Archivo';font-weight:700;font-size:13.5px;color:#B8863C" style-hover="background:rgba(232,227,212,.08)">English <span style="font-family:'IBM Plex Mono';font-size:10px;color:#9fb2a6">EN</span></button><button data-lang-btn="vi" type="button" style="display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;background:none;border:none;cursor:pointer;text-align:left;padding:9px 12px;border-radius:5px;font-family:'Archivo';font-weight:400;font-size:13.5px;color:#C9D2BE" style-hover="background:rgba(232,227,212,.08)">Tiếng Việt <span style="font-family:'IBM Plex Mono';font-size:10px;color:#9fb2a6">VI</span></button></div></span>
+        <a href="/contact" data-t="cta_specs" style="font-family:'Archivo';font-weight:600;font-size:14px;text-decoration:none;border-radius:5px;padding:10px 18px;background:#B8863C;color:#231a0c;transition:background .2s" style-hover="background:#caa055">Request specs</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header style="background:#fff;color:#1d1813;position:relative;overflow:hidden;border-bottom:1px solid rgba(23,19,15,.08);padding:clamp(56px,8vw,92px) 0 clamp(48px,6vw,72px)">
+    <div aria-hidden="true" style="position:absolute;right:-200px;top:-140px;width:600px;height:600px;border-radius:50%;border:1px solid rgba(184,134,60,.16)"><div style="position:absolute;inset:90px;border-radius:50%;border:1px solid rgba(184,134,60,.11)"></div></div>
+    <div style="max-width:1140px;margin:0 auto;padding:0 clamp(20px,4vw,32px);position:relative;z-index:2">
+      <div data-t="h_kick" style="font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:#B8863C">Insights — Góc nhìn ngành dừa</div>
+      <h1 style="font-family:'Archivo';font-weight:800;letter-spacing:-.02em;font-size:clamp(40px,6vw,76px);line-height:1.02;color:#0E3B2C;margin-top:16px;max-width:17ch"><span data-t="h_h1a">Field notes from the </span><em data-t="h_h1b" style="font-family:'Spectral';font-style:italic;font-weight:500;color:#B8863C">whole chain.</em></h1>
+      <p data-t="h_sub" style="font-size:clamp(17px,1.7vw,20px);color:#564d40;max-width:600px;margin-top:22px;line-height:1.65">Market reads, sourcing dispatches and trade-finance notes from the people who run the chain — grove to factory to ledger.</p>
+    </div>
+  </header>
+
+  <!-- CATEGORY FILTER -->
+  <div style="background:#F2EEE3;border-bottom:1px solid rgba(23,19,15,.08);position:sticky;top:72px;z-index:40">
+    <div style="max-width:1140px;margin:0 auto;padding:14px clamp(20px,4vw,32px);display:flex;gap:9px;flex-wrap:wrap;align-items:center">
+      <span data-t="filter_label" style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#7A5634;margin-right:4px">Browse</span>
+      <button data-filter="all" data-t="cat_all" style="font-family:'IBM Plex Mono';font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border:1px solid #0E3B2C;background:#0E3B2C;color:#E8E3D4;border-radius:40px;padding:8px 15px;transition:.18s">All</button>
+      <button data-filter="market" data-t="cat_market" style="font-family:'IBM Plex Mono';font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border:1px solid rgba(23,19,15,.18);background:transparent;color:#473f34;border-radius:40px;padding:8px 15px;transition:.18s">Market &amp; Pricing</button>
+      <button data-filter="sourcing" data-t="cat_sourcing" style="font-family:'IBM Plex Mono';font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border:1px solid rgba(23,19,15,.18);background:transparent;color:#473f34;border-radius:40px;padding:8px 15px;transition:.18s">Sourcing &amp; Groves</button>
+      <button data-filter="finance" data-t="cat_finance" style="font-family:'IBM Plex Mono';font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border:1px solid rgba(23,19,15,.18);background:transparent;color:#473f34;border-radius:40px;padding:8px 15px;transition:.18s">Trade Finance</button>
+      <button data-filter="sustainability" data-t="cat_sustainability" style="font-family:'IBM Plex Mono';font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border:1px solid rgba(23,19,15,.18);background:transparent;color:#473f34;border-radius:40px;padding:8px 15px;transition:.18s">Sustainability</button>
+      <button data-filter="processing" data-t="cat_processing" style="font-family:'IBM Plex Mono';font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border:1px solid rgba(23,19,15,.18);background:transparent;color:#473f34;border-radius:40px;padding:8px 15px;transition:.18s">Processing</button>
+    </div>
+  </div>
+
+  <!-- FEATURED -->
+  <section data-post data-category="market" style="background:#E8E3D4;padding:clamp(44px,6vw,72px) 0 clamp(28px,4vw,40px)">
+    <div data-reveal style="max-width:1140px;margin:0 auto;padding:0 clamp(20px,4vw,32px);opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1)">
+      <div data-t="feat_label" style="font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#B8863C;margin-bottom:20px">Featured dispatch</div>
+      <a href="/insights/post" style="display:flex;gap:clamp(24px,4vw,48px);flex-wrap:wrap;align-items:center;text-decoration:none;background:#fff;border:1px solid rgba(23,19,15,.08);border-radius:12px;padding:14px;transition:box-shadow .24s,transform .24s" style-hover="box-shadow:0 20px 44px -26px rgba(14,59,44,.5);transform:translateY(-3px)">
+        <div style="flex:1.7 1 440px;min-width:300px;border-radius:8px;overflow:hidden;aspect-ratio:16/10">
+          <img src="/assets/coco/tf-band.jpg" alt="Documentary photograph — coconut market / port" loading="lazy" style="width:100%;height:100%;display:block;object-fit:cover" />
+        </div>
+        <div style="flex:1 1 320px;min-width:280px;padding:clamp(8px,2vw,22px) clamp(8px,2vw,18px)">
+          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span data-t="feat_tag" style="font-family:'IBM Plex Mono';font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#893b4b;border:1px solid rgba(137,59,75,.35);border-radius:40px;padding:5px 11px">Market &amp; Pricing</span><span data-t="feat_read" style="font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.06em;color:#7A5634">8 min read</span></div>
+          <h2 data-t="feat_title" style="font-family:'Archivo';font-weight:700;letter-spacing:-.015em;font-size:clamp(26px,3.2vw,40px);line-height:1.12;color:#0E3B2C;margin-top:16px">Why Vietnamese coconut is mispriced — and what closes the gap</h2>
+          <p data-t="feat_excerpt" style="font-size:clamp(16px,1.6vw,18px);color:#473f34;line-height:1.7;margin-top:14px;max-width:48ch">Spot pricing rewards volume, not value. We walk the chain from Bến Tre to the L/C desk to show where the margin actually hides — and why certainty is the product worth paying for.</p>
+          <div style="display:flex;gap:12px;align-items:center;margin-top:22px"><span style="width:36px;height:36px;border-radius:50%;background:#0E3B2C;color:#B8863C;font-family:'Archivo';font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0">LT</span><div><div data-t="feat_author" style="font-family:'Archivo';font-weight:600;font-size:14px;color:#1d1813">Lê Minh Trí</div><div data-t="feat_date" style="font-family:'IBM Plex Mono';font-size:11px;color:#7A5634;letter-spacing:.04em">Jun 12, 2026</div></div></div>
+          <div data-t="read_more" style="margin-top:22px;font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#0E3B2C;border-bottom:1px solid #B8863C;display:inline-block;padding-bottom:3px">Read the dispatch →</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- GRID -->
+  <section style="background:#E8E3D4;padding:clamp(20px,3vw,32px) 0 clamp(64px,9vw,104px)">
+    <div data-reveal style="max-width:1140px;margin:0 auto;padding:0 clamp(20px,4vw,32px);opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1)">
+      <div data-t="latest_label" style="font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#B8863C;margin-bottom:24px">Latest, by category</div>
+      <div data-grid style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:24px">
+
+        <a data-post data-category="sourcing" href="/insights/post" style="display:flex;flex-direction:column;background:#fff;border:1px solid rgba(23,19,15,.08);border-radius:10px;overflow:hidden;text-decoration:none;transition:box-shadow .24s,transform .24s" style-hover="box-shadow:0 18px 38px -24px rgba(14,59,44,.45);transform:translateY(-3px)">
+          <div style="aspect-ratio:4/3;overflow:hidden"><img src="/assets/coco/about-grove.jpg" alt="Grove photograph" loading="lazy" style="width:100%;height:100%;display:block;object-fit:cover" /></div>
+          <div style="padding:22px 22px 24px;display:flex;flex-direction:column;flex:1">
+            <div style="display:flex;gap:9px;align-items:center;flex-wrap:wrap"><span data-cat-tag="sourcing" data-t="cat_sourcing" style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#0E3B2C;border:1px solid rgba(14,59,44,.28);border-radius:40px;padding:4px 10px">Sourcing &amp; Groves</span></div>
+            <h3 data-t="c1_title" style="font-family:'Archivo';font-weight:700;font-size:20px;line-height:1.22;color:#1d1813;margin-top:14px">Inside Bến Tre: how a grove becomes a contract</h3>
+            <p data-t="c1_excerpt" style="font-size:14.5px;color:#564d40;line-height:1.65;margin-top:10px;flex:1">Supply-zone locking starts with a handshake and a GPS pin. A field note on turning smallholder groves into bankable volume.</p>
+            <div style="display:flex;justify-content:space-between;gap:10px;margin-top:18px;font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.04em;color:#7A5634"><span data-t="c1_date">Jun 9, 2026</span><span data-t="c1_read">6 min</span></div>
+          </div>
+        </a>
+
+        <a data-post data-category="finance" href="/insights/post" style="display:flex;flex-direction:column;background:#fff;border:1px solid rgba(23,19,15,.08);border-radius:10px;overflow:hidden;text-decoration:none;transition:box-shadow .24s,transform .24s" style-hover="box-shadow:0 18px 38px -24px rgba(14,59,44,.45);transform:translateY(-3px)">
+          <div style="aspect-ratio:4/3;overflow:hidden"><img src="/assets/coco/home-band.jpg" alt="Port / logistics photograph" loading="lazy" style="width:100%;height:100%;display:block;object-fit:cover" /></div>
+          <div style="padding:22px 22px 24px;display:flex;flex-direction:column;flex:1">
+            <div style="display:flex;gap:9px;align-items:center;flex-wrap:wrap"><span data-cat-tag="finance" data-t="cat_finance" style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#0E3B2C;border:1px solid rgba(14,59,44,.28);border-radius:40px;padding:4px 10px">Trade Finance</span></div>
+            <h3 data-t="c2_title" style="font-family:'Archivo';font-weight:700;font-size:20px;line-height:1.22;color:#1d1813;margin-top:14px">L/C, but make it bankable: structuring coconut trade</h3>
+            <p data-t="c2_excerpt" style="font-size:14.5px;color:#564d40;line-height:1.65;margin-top:10px;flex:1">How a letter of credit, the right documents and a hedging discipline turn a volatile commodity into a financeable one.</p>
+            <div style="display:flex;justify-content:space-between;gap:10px;margin-top:18px;font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.04em;color:#7A5634"><span data-t="c2_date">Jun 4, 2026</span><span data-t="c2_read">7 min</span></div>
+          </div>
+        </a>
+
+        <a data-post data-category="sustainability" href="/insights/post" style="display:flex;flex-direction:column;background:#fff;border:1px solid rgba(23,19,15,.08);border-radius:10px;overflow:hidden;text-decoration:none;transition:box-shadow .24s,transform .24s" style-hover="box-shadow:0 18px 38px -24px rgba(14,59,44,.45);transform:translateY(-3px)">
+          <div style="aspect-ratio:4/3;overflow:hidden"><img src="/assets/coco/sus-farmer.jpg" alt="Farmer photograph" loading="lazy" style="width:100%;height:100%;display:block;object-fit:cover" /></div>
+          <div style="padding:22px 22px 24px;display:flex;flex-direction:column;flex:1">
+            <div style="display:flex;gap:9px;align-items:center;flex-wrap:wrap"><span data-cat-tag="sustainability" data-t="cat_sustainability" style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#0E3B2C;border:1px solid rgba(14,59,44,.28);border-radius:40px;padding:4px 10px">Sustainability</span></div>
+            <h3 data-t="c3_title" style="font-family:'Archivo';font-weight:700;font-size:20px;line-height:1.22;color:#1d1813;margin-top:14px">Traceability to the farmer, in practice</h3>
+            <p data-t="c3_excerpt" style="font-size:14.5px;color:#564d40;line-height:1.65;margin-top:10px;flex:1">What it actually takes to trace a sack of desiccated coconut back to the grove — and why buyers increasingly ask.</p>
+            <div style="display:flex;justify-content:space-between;gap:10px;margin-top:18px;font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.04em;color:#7A5634"><span data-t="c3_date">May 28, 2026</span><span data-t="c3_read">5 min</span></div>
+          </div>
+        </a>
+
+        <a data-post data-category="processing" href="/insights/post" style="display:flex;flex-direction:column;background:#fff;border:1px solid rgba(23,19,15,.08);border-radius:10px;overflow:hidden;text-decoration:none;transition:box-shadow .24s,transform .24s" style-hover="box-shadow:0 18px 38px -24px rgba(14,59,44,.45);transform:translateY(-3px)">
+          <div style="aspect-ratio:4/3;overflow:hidden"><img src="/assets/coco/trace-factory.jpg" alt="Factory photograph" loading="lazy" style="width:100%;height:100%;display:block;object-fit:cover" /></div>
+          <div style="padding:22px 22px 24px;display:flex;flex-direction:column;flex:1">
+            <div style="display:flex;gap:9px;align-items:center;flex-wrap:wrap"><span data-cat-tag="processing" data-t="cat_processing" style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#0E3B2C;border:1px solid rgba(14,59,44,.28);border-radius:40px;padding:4px 10px">Processing</span></div>
+            <h3 data-t="c4_title" style="font-family:'Archivo';font-weight:700;font-size:20px;line-height:1.22;color:#1d1813;margin-top:14px">One nut, four margins: the zero-waste line</h3>
+            <p data-t="c4_excerpt" style="font-size:14.5px;color:#564d40;line-height:1.65;margin-top:10px;flex:1">Press cake, skim, shell and husk. A walk through how a single coconut is turned into four revenue streams with nothing left over.</p>
+            <div style="display:flex;justify-content:space-between;gap:10px;margin-top:18px;font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.04em;color:#7A5634"><span data-t="c4_date">May 21, 2026</span><span data-t="c4_read">6 min</span></div>
+          </div>
+        </a>
+
+        <a data-post data-category="market" href="/insights/post" style="display:flex;flex-direction:column;background:#fff;border:1px solid rgba(23,19,15,.08);border-radius:10px;overflow:hidden;text-decoration:none;transition:box-shadow .24s,transform .24s" style-hover="box-shadow:0 18px 38px -24px rgba(14,59,44,.45);transform:translateY(-3px)">
+          <div style="aspect-ratio:4/3;overflow:hidden"><img src="/assets/coco/line-kernel.jpg" alt="Kernel photograph" loading="lazy" style="width:100%;height:100%;display:block;object-fit:cover" /></div>
+          <div style="padding:22px 22px 24px;display:flex;flex-direction:column;flex:1">
+            <div style="display:flex;gap:9px;align-items:center;flex-wrap:wrap"><span data-cat-tag="market" data-t="cat_market" style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#893b4b;border:1px solid rgba(137,59,75,.35);border-radius:40px;padding:4px 10px">Market &amp; Pricing</span></div>
+            <h3 data-t="c5_title" style="font-family:'Archivo';font-weight:700;font-size:20px;line-height:1.22;color:#1d1813;margin-top:14px">Reading the 2026 coconut cycle</h3>
+            <p data-t="c5_excerpt" style="font-size:14.5px;color:#564d40;line-height:1.65;margin-top:10px;flex:1">Weather, season and spot demand are pulling in three directions. A note on where we think price settles by Q4.</p>
+            <div style="display:flex;justify-content:space-between;gap:10px;margin-top:18px;font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.04em;color:#7A5634"><span data-t="c5_date">May 16, 2026</span><span data-t="c5_read">9 min</span></div>
+          </div>
+        </a>
+
+        <a data-post data-category="processing" href="/insights/post" style="display:flex;flex-direction:column;background:#fff;border:1px solid rgba(23,19,15,.08);border-radius:10px;overflow:hidden;text-decoration:none;transition:box-shadow .24s,transform .24s" style-hover="box-shadow:0 18px 38px -24px rgba(14,59,44,.45);transform:translateY(-3px)">
+          <div style="aspect-ratio:4/3;overflow:hidden"><img src="/assets/coco/line-shell.jpg" alt="Shell / charcoal photograph" loading="lazy" style="width:100%;height:100%;display:block;object-fit:cover" /></div>
+          <div style="padding:22px 22px 24px;display:flex;flex-direction:column;flex:1">
+            <div style="display:flex;gap:9px;align-items:center;flex-wrap:wrap"><span data-cat-tag="processing" data-t="cat_processing" style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#0E3B2C;border:1px solid rgba(14,59,44,.28);border-radius:40px;padding:4px 10px">Processing</span></div>
+            <h3 data-t="c6_title" style="font-family:'Archivo';font-weight:700;font-size:20px;line-height:1.22;color:#1d1813;margin-top:14px">From shell to filtration carbon</h3>
+            <p data-t="c6_excerpt" style="font-size:14.5px;color:#564d40;line-height:1.65;margin-top:10px;flex:1">How a discarded shell becomes steam-activated carbon for water and air — the highest-value use of the hardest fraction.</p>
+            <div style="display:flex;justify-content:space-between;gap:10px;margin-top:18px;font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.04em;color:#7A5634"><span data-t="c6_date">May 9, 2026</span><span data-t="c6_read">5 min</span></div>
+          </div>
+        </a>
+
+      </div>
+      <div data-empty style="display:none;text-align:center;padding:48px 0;font-family:'Spectral';font-style:italic;font-size:18px;color:#7A5634"><span data-t="empty_msg">No dispatches in this category yet — check back soon.</span></div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section style="background:#0E3B2C;color:#E8E3D4;padding:clamp(56px,8vw,88px) 0">
+    <div data-reveal style="max-width:720px;margin:0 auto;padding:0 clamp(20px,4vw,32px);text-align:center;opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1)">
+      <div data-t="nl_kick" style="font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:#B8863C">The dispatch</div>
+      <h2 data-t="nl_h2" style="font-family:'Archivo';font-weight:700;letter-spacing:-.015em;font-size:clamp(26px,3.4vw,40px);line-height:1.12;color:#fff;margin-top:14px;max-width:20ch;margin-left:auto;margin-right:auto">A short note when the chain has something to say.</h2>
+      <p data-t="nl_sub" style="font-size:17px;color:#C9D2BE;margin:16px auto 0;max-width:460px;line-height:1.6">Market reads and sourcing notes, a few times a quarter. No noise.</p>
+      <form data-nl action="/api/lead" method="POST" style="display:flex;gap:10px;max-width:460px;margin:30px auto 0;flex-wrap:wrap;justify-content:center"><input type="hidden" name="_form" value="newsletter" /><input type="text" name="_hp_website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" />
+        <input type="email" name="email" required placeholder="you@company.com" data-t-ph="nl_ph" style="flex:1 1 240px;min-width:0;background:rgba(255,255,255,.06);border:1px solid rgba(232,227,212,.24);border-radius:5px;padding:13px 16px;color:#E8E3D4;font-family:'Archivo';font-size:15px;outline:none;transition:border-color .2s" style-focus="border-color:#B8863C">
+        <button type="submit" data-t="nl_btn" style="font-family:'Archivo';font-weight:600;font-size:15px;border:none;cursor:pointer;border-radius:5px;padding:13px 24px;background:#B8863C;color:#231a0c;transition:background .2s;flex:0 0 auto" style-hover="background:#caa055">Subscribe</button>
+      </form>
+      <div data-nl-ok style="display:none;margin-top:22px;font-family:'Spectral';font-style:italic;font-size:18px;color:#B8863C"><span data-t="nl_ok">Thank you — you're on the list.</span></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:#17130F;color:#C9D2BE;padding:clamp(44px,6vw,58px) 0 40px">
+    <div style="max-width:1140px;margin:0 auto;padding:0 clamp(20px,4vw,32px)">
+      <div style="display:flex;justify-content:space-between;gap:44px;flex-wrap:wrap;border-bottom:1px solid rgba(232,227,212,.16);padding-bottom:32px">
+        <div style="flex:1 1 260px;min-width:240px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <svg width="34" height="34" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#B8863C" stroke-width="1.4"><circle cx="50" cy="50" r="46"/><circle cx="50" cy="50" r="40"/></g><circle cx="50" cy="50" r="43" fill="none" stroke="#B8863C" stroke-width="3" stroke-dasharray="0.5 4.3"/><circle cx="50" cy="50" r="30" fill="none" stroke="#B8863C" stroke-width="1.4"/><circle cx="42" cy="45" r="3.1" fill="#B8863C"/><circle cx="58" cy="45" r="3.1" fill="#B8863C"/><circle cx="50" cy="61" r="3.5" fill="#B8863C"/></svg>
+            <div><div style="font-family:'Archivo';font-weight:800;font-size:18px;color:#E8E3D4;letter-spacing:.03em">VIETNAMCOCO</div><div data-t="desc" style="font-family:'IBM Plex Mono';font-size:9px;letter-spacing:.2em;color:#B8863C;text-transform:uppercase;margin-top:3px">Coconut Trade &amp; Finance</div></div>
+          </div>
+          <p data-t="foot_tag" style="max-width:280px;margin-top:16px;font-size:14px;color:#8a8475;font-family:'Spectral';font-style:italic">The whole coconut. The whole chain.</p>
+          <div style="margin-top:22px"><div data-t="ft_markets" style="font-family:'IBM Plex Mono';font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#B8863C;margin-bottom:10px">Export markets</div><div style="display:flex;flex-wrap:wrap;gap:7px"><span data-t="ft_mk_eu" style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.06em;color:#C9D2BE;border:1px solid rgba(232,227,212,.2);border-radius:40px;padding:4px 11px">EU</span><span data-t="ft_mk_us" style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.06em;color:#C9D2BE;border:1px solid rgba(232,227,212,.2);border-radius:40px;padding:4px 11px">USA</span><span data-t="ft_mk_cn" style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.06em;color:#C9D2BE;border:1px solid rgba(232,227,212,.2);border-radius:40px;padding:4px 11px">China</span><span data-t="ft_mk_kr" style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.06em;color:#C9D2BE;border:1px solid rgba(232,227,212,.2);border-radius:40px;padding:4px 11px">Korea</span><span data-t="ft_mk_jp" style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.06em;color:#C9D2BE;border:1px solid rgba(232,227,212,.2);border-radius:40px;padding:4px 11px">Japan</span></div></div>
+        </div>
+        <div style="display:flex;gap:clamp(28px,5vw,56px);flex-wrap:wrap">
+          <div>
+            <h4 data-t="foot_explore" style="font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#B8863C;margin-bottom:13px">Explore</h4>
+            <a href="/products" data-t="nav_products" style="display:block;font-size:14px;color:#C9D2BE;text-decoration:none;margin:7px 0" style-hover="color:#fff">Products</a>
+            <a href="/trade-finance" data-t="nav_finance" style="display:block;font-size:14px;color:#C9D2BE;text-decoration:none;margin:7px 0" style-hover="color:#fff">Trade &amp; Finance</a>
+            <a href="/sustainability" data-t="nav_sustainability" style="display:block;font-size:14px;color:#C9D2BE;text-decoration:none;margin:7px 0" style-hover="color:#fff">Sustainability</a>
+            <a href="/insights" data-t="nav_insights" style="display:block;font-size:14px;color:#C9D2BE;text-decoration:none;margin:7px 0" style-hover="color:#fff">Insights</a>
+          </div>
+          <div>
+            <h4 data-t="nav_contact" style="font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#B8863C;margin-bottom:13px">Contact</h4>
+            <a href="https://www.vietnamcoco.vn" style="display:block;font-size:14px;color:#C9D2BE;text-decoration:none;margin:7px 0" style-hover="color:#fff">www.vietnamcoco.vn</a>
+            <a href="mailto:welcome@vietnamcoco.vn" style="display:block;font-size:14px;color:#C9D2BE;text-decoration:none;margin:7px 0" style-hover="color:#fff">welcome@vietnamcoco.vn</a>
+            <p style="font-size:14px;color:#C9D2BE;margin:7px 0">+84 906 688 264</p>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:30px;padding-top:24px;border-top:1px solid rgba(232,227,212,.1);display:flex;gap:clamp(24px,5vw,56px);flex-wrap:wrap"><div style="flex:1 1 260px;min-width:240px"><div data-t="ft_terms_l" style="font-family:'IBM Plex Mono';font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#B8863C;margin-bottom:11px">Trade terms</div><div style="display:flex;flex-wrap:wrap;gap:7px"><span style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.05em;color:#C9D2BE;border:1px solid rgba(232,227,212,.16);border-radius:40px;padding:4px 11px">FOB</span><span style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.05em;color:#C9D2BE;border:1px solid rgba(232,227,212,.16);border-radius:40px;padding:4px 11px">CFR</span><span style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.05em;color:#C9D2BE;border:1px solid rgba(232,227,212,.16);border-radius:40px;padding:4px 11px">CIF</span><span style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.05em;color:#C9D2BE;border:1px solid rgba(232,227,212,.16);border-radius:40px;padding:4px 11px">L/C-ready</span><span style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.05em;color:#C9D2BE;border:1px solid rgba(232,227,212,.16);border-radius:40px;padding:4px 11px">HS-classified</span></div></div><div style="flex:1 1 260px;min-width:240px"><div data-t="ft_cert_l" style="font-family:'IBM Plex Mono';font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#B8863C;margin-bottom:11px">Certifications</div><div style="display:flex;flex-wrap:wrap;gap:7px"><span style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.05em;color:#C9D2BE;border:1px solid rgba(232,227,212,.16);border-radius:40px;padding:4px 11px">HACCP</span><span style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.05em;color:#C9D2BE;border:1px solid rgba(232,227,212,.16);border-radius:40px;padding:4px 11px">ISO 22000</span><span style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.05em;color:#C9D2BE;border:1px solid rgba(232,227,212,.16);border-radius:40px;padding:4px 11px">BRC</span><span style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.05em;color:#C9D2BE;border:1px solid rgba(232,227,212,.16);border-radius:40px;padding:4px 11px">Organic</span><span style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.05em;color:#C9D2BE;border:1px solid rgba(232,227,212,.16);border-radius:40px;padding:4px 11px">Halal</span></div><div data-t="ft_cert_note" style="font-family:'IBM Plex Mono';font-size:9px;letter-spacing:.06em;color:#B8863C;opacity:.7;margin-top:10px">⚠ Pending verification</div></div></div>
+      <div style="margin-top:26px;font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.04em;color:#6f6a5e;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap">
+        <span>© 2026 Công ty TM Liên Thái Bình Dương · Lien Thai Binh Duong Trading Co., Ltd</span>
+        <span data-t="foot_note">Prototype — editorial content is illustrative</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>

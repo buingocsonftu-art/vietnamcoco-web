@@ -1,0 +1,9 @@
+---
+import Base from '../../layouts/Base.astro';
+import body from '../../bodies/products-desiccated-coconut.html?raw';
+import t from '../../i18n/products-desiccated-coconut.json';
+const figures = null;
+---
+<Base title="Desiccated Coconut — VIETNAMCOCO" description="Desiccated coconut configured to your spec — fat, cut, treatment." i18n={t} figures={figures}>
+  <Fragment set:html={body} />
+</Base>

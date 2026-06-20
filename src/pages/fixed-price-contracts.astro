@@ -1,0 +1,9 @@
+---
+import Base from '../layouts/Base.astro';
+import body from '../bodies/fixed-price-contracts.html?raw';
+import t from '../i18n/fixed-price-contracts.json';
+const figures = null;
+---
+<Base title="Fixed-Price Contracts — VIETNAMCOCO" description="Lock price and supply across the harvest cycle." i18n={t} figures={figures}>
+  <Fragment set:html={body} />
+</Base>

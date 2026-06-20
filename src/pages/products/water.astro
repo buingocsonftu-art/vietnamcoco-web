@@ -1,0 +1,9 @@
+---
+import Base from '../../layouts/Base.astro';
+import body from '../../bodies/products-water.html?raw';
+import t from '../../i18n/products-water.json';
+const figures = null;
+---
+<Base title="Water — VIETNAMCOCO" description="Coconut water powder." i18n={t} figures={figures}>
+  <Fragment set:html={body} />
+</Base>
