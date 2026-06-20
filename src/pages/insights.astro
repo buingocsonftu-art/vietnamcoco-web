@@ -1,9 +1,26 @@
 ---
 import Base from '../layouts/Base.astro';
-import body from '../bodies/insights.html?raw';
+import { getCollection } from 'astro:content';
+import partA from '../bodies/insights-partA.html?raw';
+import partB from '../bodies/insights-partB.html?raw';
 import t from '../i18n/insights.json';
-const figures = null;
+const posts = (await getCollection('posts'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const fmt = (d) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 ---
-<Base title="Insights — VIETNAMCOCO" description="Notes from the coconut trade desk." i18n={t} figures={figures}>
-  <Fragment set:html={body} />
+<Base title="Insights — VIETNAMCOCO" description="Notes from the coconut trade desk." i18n={t} figures={null}>
+  <Fragment set:html={partA} />
+  {posts.map((p) => (
+    <a data-post data-category={p.data.category} href={`/insights/${p.slug}`} style="display:flex;flex-direction:column;background:#fff;border:1px solid rgba(23,19,15,.08);border-radius:10px;overflow:hidden;text-decoration:none;transition:box-shadow .24s,transform .24s" style-hover="box-shadow:0 18px 38px -24px rgba(14,59,44,.45);transform:translateY(-3px)">
+      <div style="aspect-ratio:4/3;overflow:hidden"><img src={p.data.cover} alt="" loading="lazy" style="width:100%;height:100%;display:block;object-fit:cover" /></div>
+      <div style="padding:22px 22px 24px;display:flex;flex-direction:column;flex:1">
+        <div style="display:flex;gap:9px;align-items:center;flex-wrap:wrap"><span data-t={`cat_${p.data.category}`} style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#0E3B2C;border:1px solid rgba(14,59,44,.28);border-radius:40px;padding:4px 10px">{p.data.category}</span></div>
+        <h3 style="font-family:'Archivo';font-weight:700;font-size:20px;line-height:1.22;color:#1d1813;margin-top:14px">{p.data.title}</h3>
+        <p style="font-size:14.5px;color:#564d40;line-height:1.65;margin-top:10px;flex:1">{p.data.excerpt}</p>
+        <div style="display:flex;justify-content:space-between;gap:10px;margin-top:18px;font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.04em;color:#7A5634"><span>{fmt(p.data.date)}</span><span>{p.data.readTime}</span></div>
+      </div>
+    </a>
+  ))}
+  <Fragment set:html={partB} />
 </Base>

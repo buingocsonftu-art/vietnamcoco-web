@@ -1,0 +1,40 @@
+backend:
+  name: github
+  repo: buingocsonftu-art/vietnamcoco-web
+  branch: main
+  base_url: https://vnc-cms-auth.buingocson-ftu.workers.dev
+
+site_url: https://vietnamcoco-web.buingocson-ftu.workers.dev
+display_url: https://vietnamcoco-web.buingocson-ftu.workers.dev
+publish_mode: simple
+media_folder: public/assets/uploads
+public_folder: /assets/uploads
+
+collections:
+  - name: posts
+    label: Bài viết (Insights)
+    label_singular: Bài viết
+    folder: src/content/posts
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    sortable_fields: [date, title]
+    fields:
+      - { name: title, label: Tiêu đề, widget: string }
+      - { name: excerpt, label: Tóm tắt, widget: text, required: false }
+      - name: category
+        label: Chuyên mục
+        widget: select
+        default: market
+        options:
+          - { label: "Market & Pricing", value: market }
+          - { label: "Sourcing & Groves", value: sourcing }
+          - { label: "Trade Finance", value: finance }
+          - { label: "Sustainability", value: sustainability }
+          - { label: "Processing", value: processing }
+      - { name: date, label: Ngày đăng, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { name: cover, label: Ảnh bìa, widget: image, required: false, default: "/assets/coco/about-grove.jpg" }
+      - { name: readTime, label: Thời gian đọc, widget: string, default: "5 min", required: false }
+      - { name: draft, label: Nháp (chưa đăng), widget: boolean, default: false, required: false }
+      - { name: body, label: Nội dung, widget: markdown }

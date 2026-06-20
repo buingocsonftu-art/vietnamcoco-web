@@ -1,0 +1,36 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import nav from '../../bodies/nav.html?raw';
+import footer from '../../bodies/footer.html?raw';
+import t from '../../i18n/insights.json';
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((p) => ({ params: { slug: p.slug }, props: { post: p } }));
+}
+const { post } = Astro.props;
+const { Content } = await post.render();
+const fmt = (d) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+---
+<Base title={post.data.title + ' — VIETNAMCOCO'} description={post.data.excerpt} i18n={t} figures={null}>
+  <Fragment set:html={nav} />
+  <article style="max-width:760px;margin:0 auto;padding:clamp(40px,7vw,80px) clamp(20px,4vw,32px)">
+    <a href="/insights/" style="font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#B8863C;text-decoration:none">&larr; Insights</a>
+    <div style="margin-top:22px;font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#0E3B2C;border:1px solid rgba(14,59,44,.28);border-radius:40px;padding:4px 10px;display:inline-block">{post.data.category}</div>
+    <h1 style="font-family:'Archivo';font-weight:800;letter-spacing:-.015em;font-size:clamp(30px,5vw,48px);line-height:1.1;color:#0E3B2C;margin:18px 0 10px">{post.data.title}</h1>
+    <div style="font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.04em;color:#7A5634">{fmt(post.data.date)} &middot; {post.data.readTime}</div>
+    <img src={post.data.cover} alt="" style="width:100%;border-radius:10px;margin:26px 0 8px;display:block" />
+    <div class="vnc-prose" style="font-family:'Spectral';font-size:17px;line-height:1.78;color:#2a2722;margin-top:18px"><Content /></div>
+  </article>
+  <Fragment set:html={footer} />
+</Base>
+<style is:global>
+  .vnc-prose h2{font-family:'Archivo';font-weight:700;color:#0E3B2C;font-size:26px;margin:34px 0 12px}
+  .vnc-prose h3{font-family:'Archivo';font-weight:700;color:#0E3B2C;font-size:21px;margin:28px 0 10px}
+  .vnc-prose p{margin:0 0 18px}
+  .vnc-prose a{color:#B8863C}
+  .vnc-prose ul,.vnc-prose ol{margin:0 0 18px 22px}
+  .vnc-prose li{margin:6px 0}
+  .vnc-prose img{max-width:100%;border-radius:8px;margin:18px 0}
+  .vnc-prose blockquote{border-left:3px solid #B8863C;padding-left:18px;font-style:italic;color:#0E3B2C;margin:18px 0}
+</style>

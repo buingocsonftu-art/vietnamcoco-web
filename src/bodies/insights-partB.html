@@ -1,0 +1,57 @@
+</div>
+      <div data-empty style="display:none;text-align:center;padding:48px 0;font-family:'Spectral';font-style:italic;font-size:18px;color:#7A5634"><span data-t="empty_msg">No dispatches in this category yet — check back soon.</span></div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section style="background:#0E3B2C;color:#E8E3D4;padding:clamp(56px,8vw,88px) 0">
+    <div data-reveal style="max-width:720px;margin:0 auto;padding:0 clamp(20px,4vw,32px);text-align:center;opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1)">
+      <div data-t="nl_kick" style="font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:#B8863C">The dispatch</div>
+      <h2 data-t="nl_h2" style="font-family:'Archivo';font-weight:700;letter-spacing:-.015em;font-size:clamp(26px,3.4vw,40px);line-height:1.12;color:#fff;margin-top:14px;max-width:20ch;margin-left:auto;margin-right:auto">A short note when the chain has something to say.</h2>
+      <p data-t="nl_sub" style="font-size:17px;color:#C9D2BE;margin:16px auto 0;max-width:460px;line-height:1.6">Market reads and sourcing notes, a few times a quarter. No noise.</p>
+      <form data-nl action="/api/lead" method="POST" style="display:flex;gap:10px;max-width:460px;margin:30px auto 0;flex-wrap:wrap;justify-content:center"><input type="hidden" name="_form" value="newsletter" /><input type="text" name="_hp_website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" />
+        <input type="email" name="email" required placeholder="you@company.com" data-t-ph="nl_ph" style="flex:1 1 240px;min-width:0;background:rgba(255,255,255,.06);border:1px solid rgba(232,227,212,.24);border-radius:5px;padding:13px 16px;color:#E8E3D4;font-family:'Archivo';font-size:15px;outline:none;transition:border-color .2s" style-focus="border-color:#B8863C">
+        <button type="submit" data-t="nl_btn" style="font-family:'Archivo';font-weight:600;font-size:15px;border:none;cursor:pointer;border-radius:5px;padding:13px 24px;background:#B8863C;color:#231a0c;transition:background .2s;flex:0 0 auto" style-hover="background:#caa055">Subscribe</button>
+      </form>
+      <div data-nl-ok style="display:none;margin-top:22px;font-family:'Spectral';font-style:italic;font-size:18px;color:#B8863C"><span data-t="nl_ok">Thank you — you're on the list.</span></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:#17130F;color:#C9D2BE;padding:clamp(44px,6vw,58px) 0 40px">
+    <div style="max-width:1140px;margin:0 auto;padding:0 clamp(20px,4vw,32px)">
+      <div style="display:flex;justify-content:space-between;gap:44px;flex-wrap:wrap;border-bottom:1px solid rgba(232,227,212,.16);padding-bottom:32px">
+        <div style="flex:1 1 260px;min-width:240px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <svg width="34" height="34" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#B8863C" stroke-width="1.4"><circle cx="50" cy="50" r="46"/><circle cx="50" cy="50" r="40"/></g><circle cx="50" cy="50" r="43" fill="none" stroke="#B8863C" stroke-width="3" stroke-dasharray="0.5 4.3"/><circle cx="50" cy="50" r="30" fill="none" stroke="#B8863C" stroke-width="1.4"/><circle cx="42" cy="45" r="3.1" fill="#B8863C"/><circle cx="58" cy="45" r="3.1" fill="#B8863C"/><circle cx="50" cy="61" r="3.5" fill="#B8863C"/></svg>
+            <div><div style="font-family:'Archivo';font-weight:800;font-size:18px;color:#E8E3D4;letter-spacing:.03em">VIETNAMCOCO</div><div data-t="desc" style="font-family:'IBM Plex Mono';font-size:9px;letter-spacing:.2em;color:#B8863C;text-transform:uppercase;margin-top:3px">Coconut Trade &amp; Finance</div></div>
+          </div>
+          <p data-t="foot_tag" style="max-width:280px;margin-top:16px;font-size:14px;color:#8a8475;font-family:'Spectral';font-style:italic">The whole coconut. The whole chain.</p>
+          <div style="margin-top:22px"><div data-t="ft_markets" style="font-family:'IBM Plex Mono';font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#B8863C;margin-bottom:10px">Export markets</div><div style="display:flex;flex-wrap:wrap;gap:7px"><span data-t="ft_mk_eu" style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.06em;color:#C9D2BE;border:1px solid rgba(232,227,212,.2);border-radius:40px;padding:4px 11px">EU</span><span data-t="ft_mk_us" style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.06em;color:#C9D2BE;border:1px solid rgba(232,227,212,.2);border-radius:40px;padding:4px 11px">USA</span><span data-t="ft_mk_cn" style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.06em;color:#C9D2BE;border:1px solid rgba(232,227,212,.2);border-radius:40px;padding:4px 11px">China</span><span data-t="ft_mk_kr" style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.06em;color:#C9D2BE;border:1px solid rgba(232,227,212,.2);border-radius:40px;padding:4px 11px">Korea</span><span data-t="ft_mk_jp" style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.06em;color:#C9D2BE;border:1px solid rgba(232,227,212,.2);border-radius:40px;padding:4px 11px">Japan</span></div></div>
+        </div>
+        <div style="display:flex;gap:clamp(28px,5vw,56px);flex-wrap:wrap">
+          <div>
+            <h4 data-t="foot_explore" style="font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#B8863C;margin-bottom:13px">Explore</h4>
+            <a href="/products" data-t="nav_products" style="display:block;font-size:14px;color:#C9D2BE;text-decoration:none;margin:7px 0" style-hover="color:#fff">Products</a>
+            <a href="/trade-finance" data-t="nav_finance" style="display:block;font-size:14px;color:#C9D2BE;text-decoration:none;margin:7px 0" style-hover="color:#fff">Trade &amp; Finance</a>
+            <a href="/sustainability" data-t="nav_sustainability" style="display:block;font-size:14px;color:#C9D2BE;text-decoration:none;margin:7px 0" style-hover="color:#fff">Sustainability</a>
+            <a href="/insights" data-t="nav_insights" style="display:block;font-size:14px;color:#C9D2BE;text-decoration:none;margin:7px 0" style-hover="color:#fff">Insights</a>
+          </div>
+          <div>
+            <h4 data-t="nav_contact" style="font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#B8863C;margin-bottom:13px">Contact</h4>
+            <a href="https://www.vietnamcoco.vn" style="display:block;font-size:14px;color:#C9D2BE;text-decoration:none;margin:7px 0" style-hover="color:#fff">www.vietnamcoco.vn</a>
+            <a href="mailto:welcome@vietnamcoco.vn" style="display:block;font-size:14px;color:#C9D2BE;text-decoration:none;margin:7px 0" style-hover="color:#fff">welcome@vietnamcoco.vn</a>
+            <p style="font-size:14px;color:#C9D2BE;margin:7px 0">+84 906 688 264</p>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:30px;padding-top:24px;border-top:1px solid rgba(232,227,212,.1);display:flex;gap:clamp(24px,5vw,56px);flex-wrap:wrap"><div style="flex:1 1 260px;min-width:240px"><div data-t="ft_terms_l" style="font-family:'IBM Plex Mono';font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#B8863C;margin-bottom:11px">Trade terms</div><div style="display:flex;flex-wrap:wrap;gap:7px"><span style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.05em;color:#C9D2BE;border:1px solid rgba(232,227,212,.16);border-radius:40px;padding:4px 11px">FOB</span><span style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.05em;color:#C9D2BE;border:1px solid rgba(232,227,212,.16);border-radius:40px;padding:4px 11px">CFR</span><span style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.05em;color:#C9D2BE;border:1px solid rgba(232,227,212,.16);border-radius:40px;padding:4px 11px">CIF</span><span style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.05em;color:#C9D2BE;border:1px solid rgba(232,227,212,.16);border-radius:40px;padding:4px 11px">L/C-ready</span><span style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.05em;color:#C9D2BE;border:1px solid rgba(232,227,212,.16);border-radius:40px;padding:4px 11px">HS-classified</span></div></div><div style="flex:1 1 260px;min-width:240px"><div data-t="ft_cert_l" style="font-family:'IBM Plex Mono';font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#B8863C;margin-bottom:11px">Certifications</div><div style="display:flex;flex-wrap:wrap;gap:7px"><span style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.05em;color:#C9D2BE;border:1px solid rgba(232,227,212,.16);border-radius:40px;padding:4px 11px">HACCP</span><span style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.05em;color:#C9D2BE;border:1px solid rgba(232,227,212,.16);border-radius:40px;padding:4px 11px">ISO 22000</span><span style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.05em;color:#C9D2BE;border:1px solid rgba(232,227,212,.16);border-radius:40px;padding:4px 11px">BRC</span><span style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.05em;color:#C9D2BE;border:1px solid rgba(232,227,212,.16);border-radius:40px;padding:4px 11px">Organic</span><span style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.05em;color:#C9D2BE;border:1px solid rgba(232,227,212,.16);border-radius:40px;padding:4px 11px">Halal</span></div><div data-t="ft_cert_note" style="font-family:'IBM Plex Mono';font-size:9px;letter-spacing:.06em;color:#B8863C;opacity:.7;margin-top:10px">⚠ Pending verification</div></div></div>
+      <div style="margin-top:26px;font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.04em;color:#6f6a5e;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap">
+        <span>© 2026 Công ty TM Liên Thái Bình Dương · Lien Thai Binh Duong Trading Co., Ltd</span>
+        <span data-t="foot_note">Prototype — editorial content is illustrative</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
