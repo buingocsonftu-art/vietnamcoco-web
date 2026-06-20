@@ -2,7 +2,7 @@ backend:
   name: github
   repo: buingocsonftu-art/vietnamcoco-web
   branch: main
-  base_url: https://vnc-cms-auth.buingocson-ftu.workers.dev
+  base_url: https://vietnamcoco-web.buingocson-ftu.workers.dev
 
 site_url: https://vietnamcoco-web.buingocson-ftu.workers.dev
 display_url: https://vietnamcoco-web.buingocson-ftu.workers.dev
