@@ -7,6 +7,9 @@ export interface Props {
   lang?: string;
   i18n?: Record<string, any>;
   figures?: any;
+  canonical?: string;
+  ogType?: string;
+  ogImage?: string;
 }
 const {
   title = 'VIETNAMCOCO — Coconut Trade & Finance',
@@ -14,6 +17,9 @@ const {
   lang = 'en',
   i18n = {},
   figures = null,
+  canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : Astro.url.pathname,
+  ogType = 'website',
+  ogImage = '',
 } = Astro.props;
 ---
 <!doctype html>
@@ -23,6 +29,17 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="VIETNAMCOCO" />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {ogImage && <meta name="twitter:image" content={ogImage} />}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
