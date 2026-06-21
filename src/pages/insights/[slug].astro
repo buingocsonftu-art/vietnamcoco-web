@@ -94,7 +94,7 @@ const jsonLdStr = JSON.stringify(jsonLd);
         </figure>
       )}
 
-      <div class="post-body">
+      <div class={'post-body' + (toc.length > 1 ? ' has-toc' : '')}>
         {toc.length > 1 && (
           <aside class="post-toc" aria-label="In this article">
             <p class="toc-label">In this article</p>
@@ -267,18 +267,19 @@ const jsonLdStr = JSON.stringify(jsonLd);
   }
 
   .post-body {
-    max-width: 1000px;
+    max-width: 760px;
     margin: 34px auto 0;
   }
   @media (min-width: 1040px) {
-    .post-body {
+    .post-body.has-toc {
+      max-width: 1000px;
       display: grid;
       grid-template-columns: 224px minmax(0, 700px);
       gap: 52px;
       justify-content: center;
       align-items: start;
     }
-    .post-toc {
+    .post-body.has-toc .post-toc {
       position: sticky;
       top: 96px;
     }
