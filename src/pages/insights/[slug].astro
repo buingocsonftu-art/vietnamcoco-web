@@ -4,33 +4,540 @@ import { getCollection } from 'astro:content';
 import nav from '../../bodies/nav.html?raw';
 import footer from '../../bodies/footer.html?raw';
 import t from '../../i18n/insights.json';
+
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
-  return posts.map((p) => ({ params: { slug: p.slug }, props: { post: p } }));
+  return posts.map((p) => ({ params: { slug: p.slug }, props: { post: p, posts } }));
 }
-const { post } = Astro.props;
-const { Content } = await post.render();
-const fmt = (d) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+const { post, posts } = Astro.props;
+const { Content, headings } = await post.render();
+
+const fmt = (d) =>
+  new Date(d).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+const iso = (d) => new Date(d).toISOString();
+
+const catLabels = {
+  market: 'Market & Pricing',
+  sourcing: 'Sourcing & Groves',
+  finance: 'Trade Finance',
+  sustainability: 'Sustainability',
+  processing: 'Processing',
+};
+const catLabel = catLabels[post.data.category] || post.data.category;
+
+const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
+
+const related = posts
+  .filter((p) => p.slug !== post.slug && !p.data.draft)
+  .sort((a, b) => {
+    const sa = a.data.category === post.data.category ? 0 : 1;
+    const sb = b.data.category === post.data.category ? 0 : 1;
+    if (sa !== sb) return sa - sb;
+    return +new Date(b.data.date) - +new Date(a.data.date);
+  })
+  .slice(0, 3);
+
+const canonical = new URL('/insights/' + post.slug + '/', Astro.site).href;
+const ogImage = post.data.cover ? new URL(post.data.cover, Astro.site).href : '';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.data.title,
+  description: post.data.excerpt,
+  datePublished: iso(post.data.date),
+  dateModified: iso(post.data.date),
+  articleSection: catLabel,
+  inLanguage: 'en',
+  author: { '@type': 'Organization', name: 'VIETNAMCOCO' },
+  publisher: {
+    '@type': 'Organization',
+    name: 'VIETNAMCOCO',
+    logo: { '@type': 'ImageObject', url: new URL('/favicon.svg', Astro.site).href },
+  },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
+};
+if (ogImage) jsonLd.image = [ogImage];
+const jsonLdStr = JSON.stringify(jsonLd);
 ---
-<Base title={post.data.title + ' — VIETNAMCOCO'} description={post.data.excerpt} i18n={t} figures={null}>
+<Base
+  title={post.data.title + ' — VIETNAMCOCO'}
+  description={post.data.excerpt}
+  i18n={t}
+  figures={null}
+  canonical={canonical}
+  ogType="article"
+  ogImage={ogImage}
+>
   <Fragment set:html={nav} />
-  <article style="max-width:760px;margin:0 auto;padding:clamp(40px,7vw,80px) clamp(20px,4vw,32px)">
-    <a href="/insights/" style="font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#B8863C;text-decoration:none">&larr; Insights</a>
-    <div style="margin-top:22px;font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#0E3B2C;border:1px solid rgba(14,59,44,.28);border-radius:40px;padding:4px 10px;display:inline-block">{post.data.category}</div>
-    <h1 style="font-family:'Archivo';font-weight:800;letter-spacing:-.015em;font-size:clamp(30px,5vw,48px);line-height:1.1;color:#0E3B2C;margin:18px 0 10px">{post.data.title}</h1>
-    <div style="font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.04em;color:#7A5634">{fmt(post.data.date)} &middot; {post.data.readTime}</div>
-    <img src={post.data.cover} alt="" style="width:100%;border-radius:10px;margin:26px 0 8px;display:block" />
-    <div class="vnc-prose" style="font-family:'Spectral';font-size:17px;line-height:1.78;color:#2a2722;margin-top:18px"><Content /></div>
-  </article>
+
+  <div class="reading-progress" aria-hidden="true"><span id="rp-bar"></span></div>
+
+  <main class="post-wrap">
+    <article class="post">
+      <header class="post-head">
+        <a class="post-back" href="/insights/">&larr; Insights</a>
+        <span class="post-cat">{catLabel}</span>
+        <h1 class="post-title">{post.data.title}</h1>
+        <p class="post-lead">{post.data.excerpt}</p>
+        <div class="post-meta">
+          <span>{fmt(post.data.date)}</span>
+          <span class="dot">&middot;</span>
+          <span>{post.data.readTime}</span>
+        </div>
+      </header>
+
+      {post.data.cover && (
+        <figure class="post-cover">
+          <img src={post.data.cover} alt={post.data.title} loading="eager" decoding="async" />
+        </figure>
+      )}
+
+      <div class="post-body">
+        {toc.length > 1 && (
+          <aside class="post-toc" aria-label="In this article">
+            <p class="toc-label">In this article</p>
+            <nav>
+              <ol>
+                {toc.map((h) => (
+                  <li class={'toc-d' + h.depth}>
+                    <a href={'#' + h.slug}>{h.text}</a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          </aside>
+        )}
+        <div class="vnc-prose">
+          <Content />
+        </div>
+      </div>
+    </article>
+
+    {related.length > 0 && (
+      <section class="related">
+        <p class="related-label">More dispatches</p>
+        <div class="related-grid">
+          {related.map((p) => (
+            <a class="related-card" href={'/insights/' + p.slug + '/'}>
+              <span class="related-cat">{catLabels[p.data.category] || p.data.category}</span>
+              <span class="related-title">{p.data.title}</span>
+              <span class="related-date">{fmt(p.data.date)} &middot; {p.data.readTime}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+  </main>
+
   <Fragment set:html={footer} />
+
+  <script type="application/ld+json" set:html={jsonLdStr} />
+
+  <script is:inline>
+    (function () {
+      var bar = document.getElementById('rp-bar');
+      var art = document.querySelector('.post');
+      var links = [].slice.call(document.querySelectorAll('.post-toc a'));
+      var targets = links.map(function (a) {
+        return document.getElementById(a.getAttribute('href').slice(1));
+      });
+      function update() {
+        if (bar && art) {
+          var h = art.offsetHeight - window.innerHeight;
+          var y = window.scrollY - art.offsetTop;
+          var pct = h > 0 ? (y / h) * 100 : 0;
+          pct = pct < 0 ? 0 : pct > 100 ? 100 : pct;
+          bar.style.width = pct + '%';
+        }
+        var idx = -1;
+        for (var i = 0; i < targets.length; i++) {
+          if (targets[i] && targets[i].getBoundingClientRect().top < 160) idx = i;
+        }
+        for (var j = 0; j < links.length; j++) {
+          if (j === idx) links[j].classList.add('active');
+          else links[j].classList.remove('active');
+        }
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update, { passive: true });
+      update();
+    })();
+  </script>
 </Base>
+
 <style is:global>
-  .vnc-prose h2{font-family:'Archivo';font-weight:700;color:#0E3B2C;font-size:26px;margin:34px 0 12px}
-  .vnc-prose h3{font-family:'Archivo';font-weight:700;color:#0E3B2C;font-size:21px;margin:28px 0 10px}
-  .vnc-prose p{margin:0 0 18px}
-  .vnc-prose a{color:#B8863C}
-  .vnc-prose ul,.vnc-prose ol{margin:0 0 18px 22px}
-  .vnc-prose li{margin:6px 0}
-  .vnc-prose img{max-width:100%;border-radius:8px;margin:18px 0}
-  .vnc-prose blockquote{border-left:3px solid #B8863C;padding-left:18px;font-style:italic;color:#0E3B2C;margin:18px 0}
+  .reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: rgba(14, 59, 44, 0.08);
+    z-index: 200;
+  }
+  .reading-progress #rp-bar {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: #b8863c;
+    transition: width 0.1s linear;
+  }
+
+  .post-wrap {
+    background: #fbfaf7;
+    padding: clamp(34px, 6vw, 76px) clamp(18px, 4vw, 32px) 8px;
+  }
+  .post {
+    margin: 0 auto;
+  }
+  .post-head,
+  .post-cover {
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .post-back {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #b8863c;
+    text-decoration: none;
+  }
+  .post-back:hover {
+    text-decoration: underline;
+  }
+  .post-cat {
+    display: inline-block;
+    margin-top: 20px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #0e3b2c;
+    border: 1px solid rgba(14, 59, 44, 0.28);
+    border-radius: 40px;
+    padding: 4px 11px;
+  }
+  .post-title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.015em;
+    font-size: clamp(30px, 5vw, 50px);
+    line-height: 1.08;
+    color: #0e3b2c;
+    margin: 16px 0 0;
+  }
+  .post-lead {
+    font-family: 'Spectral', serif;
+    font-weight: 400;
+    font-size: clamp(17px, 2.4vw, 21px);
+    line-height: 1.5;
+    color: #5d5347;
+    margin: 16px 0 0;
+    max-width: 60ch;
+  }
+  .post-meta {
+    margin-top: 18px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: #7a5634;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .post-meta .dot {
+    opacity: 0.5;
+  }
+
+  .post-cover {
+    margin-top: 30px;
+    margin-bottom: 0;
+  }
+  .post-cover img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    max-height: 440px;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+  }
+
+  .post-body {
+    max-width: 1000px;
+    margin: 34px auto 0;
+  }
+  @media (min-width: 1040px) {
+    .post-body {
+      display: grid;
+      grid-template-columns: 224px minmax(0, 700px);
+      gap: 52px;
+      justify-content: center;
+      align-items: start;
+    }
+    .post-toc {
+      position: sticky;
+      top: 96px;
+    }
+  }
+
+  .post-toc {
+    margin-bottom: 28px;
+    padding: 16px 18px;
+    border: 1px solid rgba(14, 59, 44, 0.14);
+    border-radius: 12px;
+    background: #fff;
+  }
+  @media (min-width: 1040px) {
+    .post-toc {
+      background: transparent;
+      border: none;
+      border-left: 2px solid rgba(14, 59, 44, 0.12);
+      border-radius: 0;
+      padding: 4px 0 4px 18px;
+    }
+  }
+  .toc-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #b8863c;
+    margin: 0 0 10px;
+  }
+  .post-toc ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .post-toc li {
+    margin: 0;
+  }
+  .post-toc a {
+    display: block;
+    font-family: 'Spectral', serif;
+    font-size: 14.5px;
+    line-height: 1.35;
+    color: #6b6052;
+    text-decoration: none;
+    padding: 6px 0;
+    border-left: 2px solid transparent;
+    margin-left: -18px;
+    padding-left: 16px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .post-toc li.toc-d3 a {
+    padding-left: 28px;
+    font-size: 13.5px;
+    color: #8a8073;
+  }
+  .post-toc a:hover {
+    color: #0e3b2c;
+  }
+  .post-toc a.active {
+    color: #0e3b2c;
+    border-left-color: #b8863c;
+  }
+
+  .vnc-prose {
+    font-family: 'Spectral', serif;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #2c2820;
+  }
+  .vnc-prose > p:first-of-type {
+    font-size: 19.5px;
+    color: #3a352c;
+  }
+  .vnc-prose p {
+    margin: 0 0 22px;
+  }
+  .vnc-prose h2 {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #0e3b2c;
+    font-size: 27px;
+    line-height: 1.2;
+    margin: 48px 0 14px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(14, 59, 44, 0.1);
+    scroll-margin-top: 96px;
+  }
+  .vnc-prose h3 {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    color: #0e3b2c;
+    font-size: 20px;
+    line-height: 1.25;
+    margin: 32px 0 10px;
+    scroll-margin-top: 96px;
+  }
+  .vnc-prose a {
+    color: #a9772c;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 1px;
+  }
+  .vnc-prose a:hover {
+    color: #0e3b2c;
+  }
+  .vnc-prose ul,
+  .vnc-prose ol {
+    margin: 0 0 22px 4px;
+    padding-left: 22px;
+  }
+  .vnc-prose li {
+    margin: 8px 0;
+    padding-left: 4px;
+  }
+  .vnc-prose li::marker {
+    color: #b8863c;
+  }
+  .vnc-prose blockquote {
+    border-left: 3px solid #b8863c;
+    padding: 4px 0 4px 22px;
+    margin: 28px 0;
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1.6;
+    color: #0e3b2c;
+  }
+  .vnc-prose blockquote p {
+    margin: 0;
+  }
+  .vnc-prose img {
+    max-width: 100%;
+    max-height: 560px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 10px;
+    margin: 26px auto;
+    display: block;
+  }
+  .vnc-prose figure {
+    margin: 26px 0;
+  }
+  .vnc-prose figure img {
+    margin: 0 auto;
+  }
+  .vnc-prose figcaption {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: #8a8073;
+    text-align: center;
+    margin-top: 10px;
+  }
+  .vnc-prose hr {
+    border: none;
+    border-top: 1px solid rgba(14, 59, 44, 0.14);
+    margin: 40px 0;
+  }
+  .vnc-prose table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 26px 0;
+    font-size: 15.5px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .vnc-prose th,
+  .vnc-prose td {
+    border: 1px solid rgba(14, 59, 44, 0.16);
+    padding: 9px 12px;
+    text-align: left;
+  }
+  .vnc-prose th {
+    background: rgba(14, 59, 44, 0.05);
+    color: #0e3b2c;
+    font-weight: 600;
+  }
+  .vnc-prose code {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.86em;
+    background: rgba(14, 59, 44, 0.06);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  .vnc-prose pre {
+    background: #0e3b2c;
+    color: #f3efe6;
+    padding: 18px 20px;
+    border-radius: 10px;
+    overflow-x: auto;
+    margin: 26px 0;
+  }
+  .vnc-prose pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+  }
+  .vnc-prose strong {
+    font-weight: 600;
+    color: #1f1b15;
+  }
+
+  .related {
+    max-width: 1000px;
+    margin: 64px auto 0;
+    padding: 40px clamp(0px, 2vw, 8px) 72px;
+    border-top: 1px solid rgba(14, 59, 44, 0.12);
+  }
+  .related-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #b8863c;
+    margin: 0 0 22px;
+  }
+  .related-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  @media (min-width: 720px) {
+    .related-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .related-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    border: 1px solid rgba(14, 59, 44, 0.14);
+    border-radius: 12px;
+    background: #fff;
+    text-decoration: none;
+    transition: border-color 0.15s, transform 0.15s;
+  }
+  .related-card:hover {
+    border-color: #b8863c;
+    transform: translateY(-2px);
+  }
+  .related-cat {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #7a5634;
+  }
+  .related-title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 1.25;
+    color: #0e3b2c;
+  }
+  .related-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    color: #9a9081;
+    margin-top: auto;
+  }
 </style>
