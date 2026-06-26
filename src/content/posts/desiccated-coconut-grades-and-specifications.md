@@ -3,7 +3,7 @@ title: "Desiccated coconut grades and specifications: a buyer's guide"
 excerpt: "Fine, medium or coarse is the easy part. The numbers that decide whether a desiccated coconut contract holds — fat, moisture, SO2, micro — and how origin quietly changes them."
 category: processing
 date: 2026-06-26
-cover: /assets/coco/about-grove.jpg
+cover: /assets/coco/prod-kernel.jpg
 readTime: 6 min
 draft: false
 ---
