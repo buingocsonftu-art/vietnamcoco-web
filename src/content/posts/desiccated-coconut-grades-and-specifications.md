@@ -5,7 +5,7 @@ category: processing
 date: 2026-06-26
 cover: /assets/coco/about-grove.jpg
 readTime: 6 min
-draft: true
+draft: false
 ---
 Most desiccated coconut is bought on one word — "medium" — and a price. Then the container lands, the lab runs a certificate of analysis, and the argument starts: the fat is 58% not 65%, the sulphur trips an EU clean-label line, the microbial count is borderline. None of that is bad luck. It is an under-specified contract. Here is what a desiccated coconut spec sheet actually says, and which numbers belong in the contract before the first dollar moves.
 
