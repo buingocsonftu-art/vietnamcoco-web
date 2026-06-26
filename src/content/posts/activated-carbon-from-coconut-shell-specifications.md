@@ -1,4 +1,6 @@
 ---
+title: "Activated carbon from coconut shell: the specs that decide a contract"
+excerpt: "Iodine number is the headline, but hardness and ash decide the column life. The coconut-shell activated carbon specs a buyer should put on the contract."
 category: processing
 date: 2026-06-26
 cover: /assets/coco/line-shell.jpg
@@ -6,79 +8,69 @@ readTime: 7 min
 draft: true
 lang: en
 ---
+
+category: processing
+date: 2026-06-26
+cover: /assets/coco/line-shell.jpg
+readTime: 7 min
+draft: true
+lang: en
 ```
 
-# Coconut Shell Activated Carbon: A Procurement Buyer Guide
+# The Procurement Guide: Coconut Shell Activated Carbon
 
-Coconut shell activated carbon is a high-purity adsorbent prized across water treatment, gold recovery, and air/gas purification for its microporous structure, superior hardness, and low ash content. Compared to coal- or wood-based alternatives, it delivers higher adsorption capacity per unit weight and resists degradation under repeated backwash cycles. This guide gives procurement teams the specifications, application mapping, and contract levers needed to source it with confidence.
+Coconut shell activated carbon is a high-performance adsorbent made from carbonized coconut husks. It is the preferred choice for removing contaminants from water, capturing gold from cyanide leach solutions, and purifying air and gas streams because of its superior hardness, high microporosity, and low ash content compared to coal or wood-based alternatives.
 
-## What Coconut Shell Activated Carbon Is and Where It Is Used
+## What It Is and Core Applications
+This material is produced by activating carbonized coconut shells with steam at high temperatures. This process develops a vast network of microscopic pores that trap molecules on their surface. Its primary industrial uses are:
+- **Water Treatment:** Removing chlorine, organic compounds, and taste/odor issues.
+- **Gold Recovery:** Adsorbing gold-cyanide complexes from ore processing solutions.
+- **Air/Gas Purification:** Capturing volatile organic compounds (VOCs) and other gaseous contaminants.
 
-Activated carbon from coconut shell starts as charred coconut husk, then undergoes steam activation at 800-1000 °C. The process opens a network of micropores (pores under 2 nm diameter) that trap dissolved organics, dissolved gold-cyanide complexes, and vapor-phase contaminants. The resulting granular or pelletized product is sold by the metric ton, packed in 25 kg bags, 500 kg bulk bags, or loose in containers.
+## The Specifications That Define Quality
+Procurement decisions hinge on quantifiable technical data. The following specifications are non-negotiable in purchase orders.
 
-Three industries dominate demand. Municipal and industrial water treatment plants use it to remove chlorine, taste, odor compounds, and trace organics from drinking water and process water. Gold mining operations load carbon into carbon-in-pulp (CIP) and carbon-in-leach (CIL) circuits, where it adsorbs gold cyanide from slurry. Air and gas purification systems pack it into filters to capture volatile organic compounds (VOCs), hydrogen sulfide, and solvent vapors.
+**Iodine Number:** This measures adsorption capacity, especially for small molecules. High-quality coconut shell carbon consistently delivers an iodine number between **1000 and 1100 mg/g**. This metric is critical for water treatment and gold recovery efficiency.
 
-For a full listing of grades and packaging options available from VIETNAMCOCO, see [our coconut product range](/products).
+**CTC Activity (Carbon Tetrachloride Activity):** This indicates adsorption capacity for larger vapor-phase molecules, vital for air/gas applications. Look for a CTC activity level of **50 to 65 percent**.
 
-## The Specifications That Decide Quality
+**Ball-Pan Hardness:** This is a key advantage of coconut shell carbon. It resists abrasion and breakup, minimizing fines in your system. A hardness value **at or above 98 percent** is the standard, far exceeding typical coal-based products. This translates to lower replacement frequency and cleaner downstream processes.
 
-Every procurement RFQ for coconut shell activated carbon should reference six measurable specifications. Understanding what each one means, and the ranges that signal quality, protects you from blending-in of cheaper raw materials or inconsistent lots.
+**Ash Content:** Inorganic residue that can leach impurities into treated fluids. Coconut shell carbon excels here, with ash content **usually under 3 to 5 percent**, ensuring high purity.
 
-**Iodine number.** This is the headline adsorption metric. It measures milligrams of iodine adsorbed per gram of carbon. For coconut shell carbon, the typical range is 1000 to 1100 mg/g. A reading below 950 mg/g suggests either poor activation or a high proportion of non-coconut feedstock. Always require the supplier to test per ASTM D4607 or equivalent.
+**Mesh Size:** Particle size dictates flow dynamics and application suitability.
+- **Liquid Phase (Water & Gold Recovery):** Common sizes are **8x30 mesh** and **12x40 mesh**.
+- **Vapor Phase (Air/Gas Purification):** Common sizes are **4x8 mesh** and **6x12 mesh**.
 
-**CTC (carbon tetrachloride) activity.** Expressed as a percentage, CTC activity measures the carbon's capacity to adsorb carbon tetrachloride vapor from a standard airstream. Coconut shell carbon typically registers 50 to 65 percent. This number matters most for vapor-phase applications such as solvent recovery and gas polishing.
+**Apparent Density:** Affects the weight of carbon needed per volume. The typical range is **0.48 to 0.52 g/cc**. This allows for predictable bed sizing and cost calculations.
 
-**Ball-pan hardness.** Coconut shell carbon is prized for hardness versus coal or wood. A ball-pan hardness at or above 98 percent means the granules withstand the mechanical abuse of repeated backwashing, pneumatic conveying, and reactor cycling without generating excessive fines. Coal-based carbon often falls between 90 and 95 percent; wood-based carbon can be as low as 85 percent. Specify 98 percent minimum in your contract.
-
-**Ash content.** Ash is the inorganic residue left after combustion. Coconut shell carbon usually runs under 3 to 5 percent, which is lower than most coal-based alternatives. High ash reduces adsorption capacity and can introduce soluble minerals that discolor treated water. For potable water applications, insist on under 4 percent.
-
-**Mesh size distribution.** Granule size governs flow dynamics, pressure drop, and adsorption kinetics. For liquid-phase service (water treatment, gold recovery), common mesh sizes are 8×30 and 12×40. For vapor-phase service (air filtration, solvent recovery), common sizes are 4×8 and 6×12. Always request a sieve analysis certificate for each shipment.
-
-**Apparent density.** Measured in grams per cubic centimeter, apparent density for coconut shell carbon typically ranges from 0.48 to 0.52 g/cc. This figure affects bed weight calculations and contactor sizing. Lower density can signal excessive porosity or moisture.
-
-## Grades by Application
-
-Not every specification matters equally in every process. Here is how procurement teams should weight the numbers.
-
-**Water treatment.** Prioritize iodine number (≥1000 mg/g), ash content (under 4 percent), and mesh sizes 8×30 or 12×40. Hardness above 98 percent protects against fines generation in rapid gravity filters and pressure vessels. Low leachable metals matter for drinking water certification under NSF/ANSI 61.
-
-**Gold recovery.** The critical metric is a combination of iodine number and hardness. Carbon in CIP circuits is subjected to aggressive agitation and thermal reactivation. An iodine number of 1050 mg/g or higher, paired with 98 percent hardness, ensures the carbon retains adsorption capacity across multiple reactivation cycles. Mesh size 6×12 or 8×30 is standard. Apparent density around 0.50 g/cc helps maintain uniform bed expansion in the adsorption columns.
-
-**Air and gas purification.** CTC activity takes center stage. Target 55 to 65 percent for solvent recovery and VOC control. Hardness remains important because gas-phase beds experience thermal cycling. Mesh sizes 4×8 and 6×12 offer low pressure drop across deep beds.
+## Matching Grades to Your Application
+Not all grades are identical; selection depends on the target contaminant and operational pressure.
+- **High-Iodine Grade:** Prioritized for **water treatment and gold recovery**. Maximum microporosity targets small organic molecules and gold-cyanide complexes. The [our coconut product range](/products) includes specific high-iodine numbers for these demanding tasks.
+- **High-CTC Grade:** Engineered for **vapor-phase adsorption**. A balanced pore structure efficiently captures larger VOC molecules in air streams.
+- **High-Hardness/Standard Grade:** A versatile workhorse for systems where attrition resistance is critical, such as in countercurrent carbon-in-pulp (CIP) gold recovery circuits with constant pumping.
 
 ## How Raw Shell Quality and Origin Change Performance
+The final product's consistency is rooted in the raw material. Coconuts from different regions and ages produce shells with varying density and structure. Procuring carbon from manufacturers who control or audit their raw shell supply chain ensures batch-to-batch consistency. This traceability links a specific charcoal lot to the final activated carbon you receive, a practice we enforce through [traceability to the processing batch](/sustainability). A reputable supplier can provide data showing how shell origin correlates with final iodine number and hardness.
 
-Coconut shell is not a single uniform feedstock. Shell thickness, oil residue, moisture content, and storage conditions all affect the activated carbon produced from it.
+## Turning Specs into a Bankable Contract
+Your purchase agreement should lock in the critical parameters. Do not accept vague "premium grade" descriptions. Insist on a technical datasheet attached to the contract specifying guaranteed minimum iodine number, maximum ash content, hardness percentage, and mesh size distribution. Tie acceptance to third-party testing of the shipment against these specs.
 
-Vietnamese and Philippine coconut shells are generally thicker and denser than shells from some other origins. Thicker char yields more micropore volume per gram of carbon, which pushes iodine number toward the upper end of the 1000-1100 range. Shells stored in humid, open-air conditions can develop mold and introduce ash-forming minerals before the carbonization stage even begins.
-
-Reputable producers control the chain from harvest to carbonization. At VIETNAMCOCO, we maintain [traceability to the processing batch](/sustainability), so buyers can verify shell origin, carbonization date, and activation parameters for every lot shipped.
-
-## Turning Specifications into a Bankable Contract
-
-A specification sheet is only as good as the contract language behind it. Four clauses protect procurement teams from costly disputes.
-
-**Parameter limits with test methods.** Write every spec with a number, a tolerance, and an ASTM or equivalent test method. For example: "Iodine number minimum 1000 mg/g per ASTM D4607; ball-pan hardness minimum 98 percent per ASTM D3802."
-
-**Sampling protocol.** Define how samples are drawn from the lot, who draws them, and how many composite samples are required. Specify independent third-party lab testing at destination if the lot value justifies it.
-
-**Rejection and replacement terms.** State clearly what happens if a shipment fails any specification. Include timelines for replacement shipment and who bears re-testing and demurrage costs.
-
-**Payment structure tied to test results.** Link payment milestones to successful testing, not just to shipping documents. For international shipments where capital is tied up for weeks, consider using [trade finance](/trade-finance) instruments that release funds only after destination inspection clears the material. This protects both buyer and seller and keeps cash flow predictable.
+For large-volume or long-term supply agreements, consider the financial structure. Secure trade finance solutions can bridge the gap between your order and receipt of goods, optimizing your cash flow. Discussing payment terms like letters of credit or post-shipment financing with your supplier early in negotiations is prudent. Learn more about structured options via [trade finance](/trade-finance).
 
 ## Frequently Asked Questions
 
-**Q: What is the difference between coconut shell activated carbon and coal-based activated carbon?**
-A: Coconut shell carbon has a predominantly microporous structure, higher iodine number (1000-1100 mg/g versus 800-900 for many coal grades), higher hardness (≥98 percent versus 90-95 percent), and lower ash (under 3-5 percent). Coal-based carbon tends to have more mesopores, which suits certain large-molecule adsorption tasks but underperforms for dissolved organics and gold cyanide complexes.
+**Q: Why is coconut shell carbon more expensive than coal-based carbon?**
+A: The higher cost reflects the superior raw material and the production yield. Coconut shells produce a more microporous and harder carbon with lower ash, delivering better performance per kilogram, which often lowers the total cost of ownership through longer life and higher efficiency.
 
-**Q: What mesh size should I specify for a drinking water treatment plant?**
-A: Use 8×30 or 12×40 mesh. These sizes balance adsorption kinetics against pressure drop in rapid gravity and pressure filters. A sieve analysis certificate should accompany each shipment to confirm compliance.
+**Q: Can I use the same grade for both water treatment and air purification?**
+A: It is not recommended. Water treatment typically requires a high-iodine grade with fine mesh (e.g., 12x40) to maximize contact. Air purification needs a high-CTC grade with larger mesh (e.g., 4x8) to minimize pressure drop. Using the wrong grade leads to poor performance and higher costs.
 
-**Q: How does CTC activity affect air purification performance?**
-A: CTC activity measures vapor-phase adsorption capacity. A reading of 50 to 65 percent indicates strong capture of volatile organic compounds, solvent vapors, and odorous gases. Higher CTC values mean longer bed life and fewer changeouts per year.
+**Q: What is the typical regeneration or reactivation cycle?**
+A: This varies greatly by application and contaminant loading. In gold recovery, carbon is often regenerated after each cycle in a kiln. For water treatment, thermal reactivation might occur after 6-12 months. Your supplier should provide guidance based on your specific water or process stream analysis.
 
-**Q: Can I mix coconut shell carbon from different suppliers in the same vessel?**
-A: It is not recommended. Differences in hardness, apparent density, and particle size distribution can cause segregation, channeling, and uneven breakthrough. Source from a single qualified supplier per vessel to maintain predictable performance.
+**Q: How do I verify the supplier's stated specifications?**
+A: Always require a Certificate of Analysis (CoA) with the shipment. For critical applications or large orders, stipulate in your contract that you have the right to pull a sample for independent testing at an accredited laboratory before final acceptance and payment.
 
-**Q: How should coconut shell activated carbon be stored before use?**
-A: Keep bags sealed and stored in a dry, covered area. Coconut shell carbon adsorbs atmospheric moisture and VOCs, which reduces available adsorption capacity at commissioning. FIFO (first-in, first-out) rotation prevents extended storage exceeding six months.
+**Q: What packaging is standard to prevent damage and moisture absorption?**
+A: Standard packaging is bulk bags (typically 500kg to 1MT) or 25kg bags, both poly-lined to protect against moisture and contamination during shipping and storage. Confirm packaging details with your supplier to align with your facility's handling equipment.
